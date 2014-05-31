@@ -1,5 +1,5 @@
 {
-  "name": "streams.io",
+  "name": "flow.io",
   "version": "0.0.0",
   "description": "Collection of Node.js streams",
   "author": {
@@ -18,7 +18,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kgryte/streams.io.git"
+    "url": "git://github.com/kgryte/flow.io.git"
   },
   "keywords": [
     "streams",
@@ -27,7 +27,7 @@
     "stats"
   ],
   "bugs": {
-    "url": "https://github.com/kgryte/streams.io/issues"
+    "url": "https://github.com/kgryte/flow.io/issues"
   },
   "dependencies": {
     "JSONStream": "~0.7.3",
