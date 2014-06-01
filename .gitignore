@@ -1,11 +1,7 @@
 
 # Directories #
 ###############
-public/data/timeseries/
-public/data/stats/
-public/data/distributions/
-public/data/summary/
-public/data/mva/
+
 
 # Compiled source #
 ###################

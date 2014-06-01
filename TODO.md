@@ -20,3 +20,5 @@ Todos.
 5. 	Histnd
 6. 	MVA should output 2d hist
 7. 	Ability to specify value precision (significant digits)
+8. 	KDE pdfs
+

@@ -12,7 +12,7 @@ docs/
 examples/
 reports/
 support/
-test/
+tests/
 
 # Node.js #
 ###########
