@@ -22,10 +22,14 @@ Todos.
 7. 	Ability to specify value precision (significant digits)
 8. 	KDE pdfs
 9. 	Filter/Find
-10. Threshold with count
+10. Threshold count
 11. Threshold binary
-12. Threshold with alert
-13. 
-14. moutlier
-15. eoutlier
-16. outlier
+12. Threshold alert
+13. cov rho
+14. moving threshold
+15. moving outliers
+16. moving iqr
+17. moving quantile
+18. moving max/min/sum
+19. moving median
+20. moving rho
