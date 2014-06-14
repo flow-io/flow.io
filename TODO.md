@@ -21,4 +21,11 @@ Todos.
 6. 	MVA should output 2d hist
 7. 	Ability to specify value precision (significant digits)
 8. 	KDE pdfs
-
+9. 	Filter/Find
+10. Threshold with count
+11. Threshold binary
+12. Threshold with alert
+13. 
+14. moutlier
+15. eoutlier
+16. outlier
