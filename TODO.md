@@ -9,6 +9,7 @@ Todos.
 2. 	Makefile
 3. 	Examples
 4. 	Travis.yml
+5. 	npm publish
 
 
 ### Streams
