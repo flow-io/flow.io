@@ -34,4 +34,4 @@ Todos.
 18. moving max/min/sum
 19. moving median
 20. moving rho
-21. through stream to remove NaNs; requires accessor function
+21. 
