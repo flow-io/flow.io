@@ -26,7 +26,7 @@ Todos.
 10. Threshold count
 11. Threshold binary
 12. Threshold alert
-13. cov rho
+13. rho
 14. moving threshold
 15. moving outliers
 16. moving iqr
@@ -34,4 +34,6 @@ Todos.
 18. moving max/min/sum
 19. moving median
 20. moving rho
-21. 
+21. pc analysis
+22. moving cov
+23. merge independent json streams on a per element basis
