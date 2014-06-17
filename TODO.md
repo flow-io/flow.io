@@ -26,7 +26,7 @@ Todos.
 10. Threshold count
 11. Threshold binary
 12. Threshold alert
-13. pcc
+13. 
 14. moving threshold
 15. moving outliers
 16. moving iqr
