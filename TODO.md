@@ -10,6 +10,8 @@ Todos.
 3. 	Examples
 4. 	Travis.yml
 5. 	npm publish
+6. 	individualize
+7. 	serverify
 
 
 ### Streams
@@ -22,11 +24,11 @@ Todos.
 6. 	MVA should output 2d hist
 7. 	Ability to specify value precision (significant digits)
 8. 	KDE pdfs
-9. 	
+9. 	Threshold occurrence (accumulation threshold)
 10. Threshold count
 11. Threshold binary
 12. Threshold alert
-13. 
+13. moving threshold occurrence
 14. moving threshold
 15. moving outliers
 16. moving iqr
