@@ -56,7 +56,7 @@ Todos.
 10. 
 11. Stats.mean
 12. Stats.median
-13. Stats.min
+13. 
 14. Stats.mmean
 15. Stats.mva
 16. Stats.mvariance
