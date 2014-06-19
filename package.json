@@ -24,7 +24,9 @@
     "streams",
     "json",
     "statistics",
-    "stats"
+    "stats",
+    "flow",
+    "computation"
   ],
   "bugs": {
     "url": "https://github.com/kgryte/flow.io/issues"
@@ -33,7 +35,8 @@
     "JSONStream": "~0.7.3",
     "event-stream": "~3.1.5",
     "through": "~2.3.4",
-    "stream-combiner": "~0.2.0"
+    "stream-combiner": "~0.2.0",
+    "graceful-fs": "~3.0.2"
   },
   "devDependencies": {
     "mocha": "1.x.x",
