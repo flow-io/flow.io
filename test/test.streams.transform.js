@@ -74,4 +74,53 @@ describe( 'streams/transform', function tests() {
 		} // end FUNCTION onRead()
 	});
 
+	it( 'should allow for arbitrary transformations', function test() {
+		var numData = 1000,
+			data = new Array( numData ),
+			expected = new Array( numData ),
+			tStream,
+			transform = function ( d ) {
+				return {
+					'x': d.x,
+					'xy': d.x*d.y,
+					'y2': d.y*d.y,
+					'label': 'Data: '+d.x
+				};
+			};
+
+		// Simulate some data...
+		for ( var i = 0; i < numData; i++ ) {
+			data[ i ] = {
+				'x': i,
+				'y': Math.random()
+			};
+			expected[ i ] = {
+				'x': data[ i ].x,
+				'xy': data[ i ].x * data[ i ].y,
+				'y2': data[ i ].y * data[ i ].y,
+				'label': 'Data: '+data[ i ].x
+			};
+		}
+
+		// Create a new transform stream:
+		tStream = stream( transform );
+
+		// Mock reading from the stream:
+		utils.readStream( tStream, onRead );
+
+		// Mock piping a data to the stream:
+		utils.writeStream( data, tStream );
+
+		return;
+
+		/**
+		* FUNCTION: onRead( error, actual )
+		*	Read event handler. Checks for errors and compares streamed data to expected data.
+		*/
+		function onRead( error, actual ) {
+			expect( error ).to.not.exist;
+			assert.deepEqual( actual, expected );
+		} // end FUNCTION onRead()
+	});
+
 });
