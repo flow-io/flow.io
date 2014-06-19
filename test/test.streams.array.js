@@ -4,9 +4,6 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
-	// Assertion module:
-	assert = require( 'assert' ),
-
 	// Stream spec:
 	spec = require( 'stream-spec' ),
 
@@ -19,18 +16,19 @@ var // Expectation library:
 
 // VARIABLES //
 
-var expect = chai.expect;
+var expect = chai.expect,
+	assert = chai.assert;
 
 
 // TESTS //
 
-describe( 'streams/array', function() {
+describe( 'streams/array', function tests() {
 
-	it( 'should export a factory function', function() {
+	it( 'should export a factory function', function test() {
 		expect( stream ).to.be.a( 'function' );
 	});
 
-	it( 'should transform an array into a readable stream', function() {
+	it( 'should transform an array into a readable stream', function test() {
 		var numData = 1000,
 			expected = new Array( numData ),
 			aStream, s;
@@ -48,16 +46,24 @@ describe( 'streams/array', function() {
 			.through();
 
 		// Mock reading from the stream:
-		utils.readStream( aStream, function onRead( error, actual ) {
-			assert.ifError( error );
-			assert.deepEqual( actual, expected );
-		});
+		utils.readStream( aStream, onRead );
 
 		// Validate the stream when the stream closes:
 		aStream.on( 'close', s.validate );
 
 		// Mock piping a single array to the stream:
 		utils.writeStream( [ expected ], aStream );
+
+		return;
+
+		/**
+		* FUNCTION: onRead( error, actual )
+		*	Read event handler. Checks for errors and compares streamed data to expected data.
+		*/
+		function onRead( error, actual ) {
+			expect( error ).to.not.exist;
+			assert.deepEqual( actual, expected );
+		} // end FUNCTION onRead()
 	});
 
 });
