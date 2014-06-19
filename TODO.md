@@ -45,7 +45,7 @@ Todos.
 
 1. 	Filters
 2. 	Find
-3. 	Reduce
+3. 	
 4. 	Stats.count
 5. 	Stats.covariance
 6. 	Stats.histc
