@@ -5,7 +5,7 @@ var // Expectation library:
 	chai = require( 'chai' ),
 
 	// Module to be tested:
-	stream = require( './../lib/streams/json/parse.js' );
+	stream = require( './../lib/json/parse.js' );
 
 
 // VARIABLES //

@@ -11,7 +11,7 @@ var // Expectation library:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	stream = require( './../lib/streams/transform' );
+	stream = require( './../lib/transform' );
 
 
 // VARIABLES //

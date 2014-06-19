@@ -17,7 +17,7 @@ var // Filesystem module:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	stream = require( './../lib/streams/file/write.js' );
+	stream = require( './../lib/file/write.js' );
 
 
 // VARIABLES //

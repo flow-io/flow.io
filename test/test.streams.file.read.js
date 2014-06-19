@@ -14,7 +14,7 @@ var // Path module:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	stream = require( './../lib/streams/file/read.js' );
+	stream = require( './../lib/file/read.js' );
 
 
 // VARIABLES //
