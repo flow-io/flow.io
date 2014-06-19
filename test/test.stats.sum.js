@@ -28,11 +28,6 @@ describe( 'stats/sum', function tests() {
 		expect( sStream ).to.be.a( 'function' );
 	});
 
-	it( 'should have a reduce method factory', function test() {
-		var rStream = sStream();
-		expect( rStream.reduce ).to.be.a( 'function' );
-	});
-
 	it ( 'should have an initial accumulator value of 0', function test() {
 		var rStream = sStream();
 		assert.strictEqual( rStream._value, 0 );

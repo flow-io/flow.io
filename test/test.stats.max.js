@@ -28,16 +28,6 @@ describe( 'stats/max', function tests() {
 		expect( mStream ).to.be.a( 'function' );
 	});
 
-	it( 'should have a reduce method factory', function test() {
-		var rStream = mStream();
-		expect( rStream.reduce ).to.be.a( 'function' );
-	});
-
-	it ( 'should have an initial accumulator value of negative infinity', function test() {
-		var rStream = mStream();
-		assert.strictEqual( rStream._value, Number.NEGATIVE_INFINITY );
-	});
-
 	it( 'should provide a method to get the initial accumulator value', function test() {
 		var rStream = mStream();
 		assert.strictEqual( rStream.value(), Number.NEGATIVE_INFINITY );

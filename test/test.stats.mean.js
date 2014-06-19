@@ -11,7 +11,7 @@ var // Expectation library:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	cStream = require( './../lib/stats/count' );
+	mStream = require( './../lib/stats/mean' );
 
 
 // VARIABLES //
@@ -22,21 +22,32 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'stats/count', function tests() {
+describe( 'stats/mean', function tests() {
 
 	it( 'should export a factory function', function test() {
-		expect( cStream ).to.be.a( 'function' );
+		expect( mStream ).to.be.a( 'function' );
 	});
 
 	it( 'should provide a method to get the initial accumulator value', function test() {
-		var rStream = cStream();
+		var rStream = mStream();
 		assert.strictEqual( rStream.value(), 0 );
 	});
 
+	it( 'should provide a method to get the initial accumulator value number', function test() {
+		var rStream = mStream();
+		assert.strictEqual( rStream.numValues(), 0 );
+	});
+
 	it( 'should provide a method to set the initial accumulator value', function test() {
-		var rStream = cStream();
+		var rStream = mStream();
 		rStream.value( 5 );
 		assert.strictEqual( rStream.value(), 5 );
+	});
+
+	it( 'should provide a method to set the initial accumulator value number', function test() {
+		var rStream = mStream();
+		rStream.numValues( 5 );
+		assert.strictEqual( rStream.numValues(), 5 );
 	});
 
 	it( 'should count piped data', function test() {
