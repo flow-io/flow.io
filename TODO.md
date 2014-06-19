@@ -63,6 +63,6 @@ Todos.
 17. Stats.pcc
 18. Stats.quantiles
 19. Stats.skewness
-20. Stats.sum
+20. 
 21. Stats.variance
 22. Threshold
