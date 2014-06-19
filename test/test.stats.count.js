@@ -11,7 +11,7 @@ var // Expectation library:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	stream = require( './../lib/reduce' );
+	cStream = require( './../lib/stats/count' );
 
 
 // VARIABLES //
@@ -22,48 +22,45 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'reduce', function tests() {
+describe( 'stats/count', function tests() {
 
 	it( 'should export a factory function', function test() {
-		expect( stream ).to.be.a( 'function' );
+		expect( cStream ).to.be.a( 'function' );
 	});
 
-	it( 'should throw an error if a reduce function and accumulator are not provided', function test() {
-		expect( stream ).to.throw( Error );
-		expect( getStream ).to.throw( Error );
-		return;
-
-		/**
-		* FUNCTION: getStream()
-		*	Supplies a single argument to the stream generator.
-		*
-		* @returns {Stream} reduce stream
-		*/
-		function getStream() {
-			return stream( function reduce( count, x ) {
-				return count + 1;
-			});
-		} // end FUNCTION getStream()
+	it( 'should have a reduce method factory', function test() {
+		var rStream = cStream();
+		expect( rStream.reduce ).to.be.a( 'function' );
 	});
 
-	it( 'should return a single value', function test() {
+	it ( 'should have an initial accumulator value of 0', function test() {
+		var rStream = cStream();
+		assert.strictEqual( rStream._value, 0 );
+	});
+
+	it( 'should provide a method to get the initial accumulator value', function test() {
+		var rStream = cStream();
+		assert.strictEqual( rStream.value(), 0 );
+	});
+
+	it( 'should provide a method to set the initial accumulator value', function test() {
+		var rStream = cStream();
+		rStream.value( 5 );
+		assert.strictEqual( rStream.value(), 5 );
+	});
+
+	it( 'should count piped data', function test() {
 		var numData = 1000,
 			expected = new Array( numData ),
-			rStream, s,
-
-			// Return last value:
-			reduce = function ( acc, val ) {
-				acc = val;
-				return acc;
-			};
+			rStream;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
 			expected[ i ] = Math.random();
 		}
 
-		// Create a new reduce stream:
-		rStream = stream( reduce, 0 );
+		// Create a new count stream:
+		rStream = cStream().stream();
 
 		// Create the stream spec:
 		s = spec( rStream )
@@ -85,29 +82,28 @@ describe( 'reduce', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var lastVal = expected[ expected.length-1 ];
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], lastVal );
+			assert.deepEqual( actual[ 0 ], numData );
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should allow for arbitrary reduce functions', function test() {
-		var expected = new Array( 10 ),
-			rStream,
-
-			// Compute a factorial:
-			reduce = function ( acc, val ) {
-				acc *= val;
-				return acc;
-			};
+	it( 'should count piped data using an arbitrary starting value', function test() {
+		var numData = 1000,
+			expected = new Array( numData ),
+			reducer, rStream,
+			initValue = 999;
 
 		// Simulate some data...
-		for ( var i = 1; i < 11; i++ ) {
-			expected[ i-1 ] = i;
+		for ( var i = 0; i < numData; i++ ) {
+			expected[ i ] = Math.random();
 		}
 
-		// Create a new reduce stream:
-		rStream = stream( reduce, 1 );
+		// Create a new count stream generator:
+		reducer = cStream();
+
+		// Set the initial count and create a new stream:
+		rStream = reducer.value( initValue )
+			.stream();
 
 		// Mock reading from the stream:
 		utils.readStream( rStream, onRead );
@@ -122,12 +118,8 @@ describe( 'reduce', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var val = 1;
-			for ( var i = 0; i < expected.length; i++ ) {
-				val = val * expected[ i ];
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], val );
+			assert.deepEqual( actual[ 0 ], numData+initValue );
 		} // end FUNCTION onRead()
 	});
 
