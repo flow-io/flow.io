@@ -28,7 +28,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'streams/file/write', function tests() {
+describe( 'file/write', function tests() {
 
 	it( 'should export a factory function', function test() {
 		expect( stream ).to.be.a( 'function' );

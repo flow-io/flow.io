@@ -39,3 +39,29 @@ Todos.
 21. pc analysis
 22. moving cov
 23. merge independent json streams on a per element basis
+
+
+### Tests
+
+1. 	Filters
+2. 	Find
+3. 	Reduce
+4. 	Stats.count
+5. 	Stats.covariance
+6. 	Stats.histc
+7. 	Stats.iqr
+8. 	Stats.kde
+9. 	Stats.kurtosis
+10. Stats.max
+11. Stats.mean
+12. Stats.median
+13. Stats.min
+14. Stats.mmean
+15. Stats.mva
+16. Stats.mvariance
+17. Stats.pcc
+18. Stats.quantiles
+19. Stats.skewness
+20. Stats.sum
+21. Stats.variance
+22. Threshold

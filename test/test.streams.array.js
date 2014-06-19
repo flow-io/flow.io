@@ -22,7 +22,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'streams/array', function tests() {
+describe( 'array', function tests() {
 
 	it( 'should export a factory function', function test() {
 		expect( stream ).to.be.a( 'function' );
