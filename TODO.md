@@ -46,7 +46,7 @@ Todos.
 ### Tests
 
 1. 	
-2. 	Find (multiple filters for same datum; multiple accessors/filters)
+2. 	Find (multiple accessors/filters)
 3. 	Filters.outliers
 4. 	Filters.eOutliers
 5. 	Stats.covariance
