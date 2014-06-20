@@ -54,7 +54,7 @@ Todos.
 8. 	Stats.kde
 9. 	Stats.kurtosis
 10. 
-11. Stats.mean
+11. 
 12. Stats.median
 13. 
 14. Stats.mmean
