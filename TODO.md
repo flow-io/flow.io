@@ -40,13 +40,14 @@ Todos.
 21. pc analysis
 22. moving cov
 23. merge independent json streams on a per element basis
-24. 
+24. find first([num])
+25. find last([num])
 
 
 ### Tests
 
 1. 	
-2. 	Find (multiple accessors/filters)
+2. 	
 3. 	Filters.outliers
 4. 	Filters.eOutliers
 5. 	Stats.covariance
