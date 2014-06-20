@@ -32,6 +32,10 @@ describe( 'filter/nan', function tests() {
 	it( 'should provide a method to get all data accessors', function test() {
 		var fStream = nStream();
 		expect( fStream.accessors() ).to.be.an( 'object' );
+	});
+
+	it( 'should not provide any default accessors', function test() {
+		var fStream = nStream();
 		expect( fStream.accessors() ).to.be.empty;
 	});
 
@@ -70,7 +74,7 @@ describe( 'filter/nan', function tests() {
 		assert.isUndefined( fStream.accessors( 'd' ) );
 	});
 
-	it( 'should throw an error if one attempts to set the data accessor to something other than a function', function test() {
+	it( 'should throw an error if one attempts to set a data accessor to something other than a function', function test() {
 		var fStream = nStream(),
 			x = 'x';
 
