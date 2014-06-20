@@ -13,12 +13,13 @@ Todos.
 6. 	individualize
 7. 	serverify
 8. 	use through2 (?)
-9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? 
+9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? --> yes. flow.read().stream( path, clbk )
+10. pipelines (snap together) 
 
 
 ### Streams
 
-1. 	Moving weighted mean
+1. 	Moving weighted mean (exp)
 2. 	Moving weighted variance
 3. 	Mean overlap parameter
 4. 	Variance overlap parameter
@@ -43,6 +44,8 @@ Todos.
 23. merge independent json streams on a per element basis
 24. find first([num])
 25. find last([num])
+26. sort (sink)
+27. 
 
 
 ### Tests
