@@ -44,13 +44,20 @@ describe( 'stats/quantiles', function tests() {
 		assert.strictEqual( tStream.quantiles(), 10 );
 	});
 
-	it( 'should not allow a client to set a non-numeric quantile number', function test() {
+	it( 'should not allow a non-numeric quantile number', function test() {
 		var tStream = qStream();
+		
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
 
-		expect( badQuantileNum ).to.throw( Error );
-
-		function badQuantileNum() {
-			tStream.quantiles( '5' );
+		function badValue( value ) {
+			return function() {
+				tStream.value( value );
+			};
 		}
 	});
 

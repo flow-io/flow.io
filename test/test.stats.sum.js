@@ -45,6 +45,23 @@ describe( 'stats/sum', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
+	it( 'should not allow a non-numeric initial accumulator value', function test() {
+		var rStream = sStream();
+		
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
+
+		function badValue( value ) {
+			return function() {
+				rStream.value( value );
+			};
+		}
+	});
+
 	it( 'should return the sum value of piped data', function test( done ) {
 		var data, rStream, s, SUM;
 
