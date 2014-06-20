@@ -40,6 +40,23 @@ describe( 'stats/max', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
+	it( 'should not allow a non-numeric max value', function test() {
+		var rStream = mStream();
+		
+		expect( badMax( '5' ) ).to.throw( Error );
+		expect( badMax( [] ) ).to.throw( Error );
+		expect( badMax( {} ) ).to.throw( Error );
+		expect( badMax( null ) ).to.throw( Error );
+		expect( badMax( undefined ) ).to.throw( Error );
+		expect( badMax( NaN ) ).to.throw( Error );
+
+		function badMax( value ) {
+			return function() {
+				rStream.value( value );
+			};
+		}
+	});
+
 	it( 'should return the maximum value of piped data', function test( done ) {
 		var data, rStream, s,
 			MAX = 10;
