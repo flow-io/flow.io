@@ -42,10 +42,44 @@ describe( 'stats/mean', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
+	it( 'should not allow a non-numeric initial accumulator value', function test() {
+		var rStream = mStream();
+		
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
+
+		function badValue( value ) {
+			return function() {
+				rStream.value( value );
+			};
+		}
+	});
+
 	it( 'should provide a method to set the initial accumulator value number', function test() {
 		var rStream = mStream();
 		rStream.numValues( 5 );
 		assert.strictEqual( rStream.numValues(), 5 );
+	});
+
+	it( 'should not allow a non-numeric initial accumulator value number', function test() {
+		var rStream = mStream();
+		
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
+
+		function badValue( value ) {
+			return function() {
+				rStream.numValues( value );
+			};
+		}
 	});
 
 	it( 'should calculate the mean of piped data', function test( done ) {
