@@ -45,7 +45,7 @@ Todos.
 
 ### Tests
 
-1. 	Filters.nan
+1. 	
 2. 	Find
 3. 	Filters.outliers
 4. 	Filters.eOutliers
