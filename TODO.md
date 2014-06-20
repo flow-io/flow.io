@@ -55,7 +55,7 @@ Todos.
 9. 	Stats.kurtosis
 10. 
 11. 
-12. Stats.median
+12. 
 13. 
 14. Stats.mmean
 15. Stats.mva
