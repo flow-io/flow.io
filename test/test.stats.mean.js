@@ -4,9 +4,6 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
-	// Stream spec:
-	spec = require( 'stream-spec' ),
-
 	// Test utilities:
 	utils = require( './utils' ),
 
@@ -23,6 +20,7 @@ var expect = chai.expect,
 // TESTS //
 
 describe( 'stats/mean', function tests() {
+	'use strict';
 
 	it( 'should export a factory function', function test() {
 		expect( mStream ).to.be.a( 'function' );
@@ -50,7 +48,7 @@ describe( 'stats/mean', function tests() {
 		assert.strictEqual( rStream.numValues(), 5 );
 	});
 
-	it( 'should count piped data', function test() {
+	it( 'should calculate the mean of piped data', function test() {
 		var numData = 1000,
 			expected = new Array( numData ),
 			rStream;
@@ -60,18 +58,11 @@ describe( 'stats/mean', function tests() {
 			expected[ i ] = Math.random();
 		}
 
-		// Create a new count stream:
-		rStream = cStream().stream();
-
-		// Create the stream spec:
-		s = spec( rStream )
-			.through();
+		// Create a new mean stream:
+		rStream = mStream().stream();
 
 		// Mock reading from the stream:
 		utils.readStream( rStream, onRead );
-
-		// Validate the stream when the stream closes:
-		rStream.on( 'close', s.validate );
 
 		// Mock piping a data to the stream:
 		utils.writeStream( expected, rStream );
@@ -83,26 +74,31 @@ describe( 'stats/mean', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
+			var mean = 0, delta = 0;
+			for ( var i = 0; i < numData; i++ ) {
+				delta = expected[ i ] - mean;
+				mean += delta / (i+1);
+			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], numData );
+			assert.deepEqual( actual[ 0 ], mean );
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should count piped data using an arbitrary starting value', function test() {
+	it( 'should count piped data using an arbitrary starting mean value', function test() {
 		var numData = 1000,
 			expected = new Array( numData ),
 			reducer, rStream,
-			initValue = 999;
+			initValue = 1005;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			expected[ i ] = Math.random() + 1000;
 		}
 
-		// Create a new count stream generator:
-		reducer = cStream();
+		// Create a new mean stream generator:
+		reducer = mStream();
 
-		// Set the initial count and create a new stream:
+		// Set the initial mean and create a new stream:
 		rStream = reducer.value( initValue )
 			.stream();
 
@@ -119,8 +115,54 @@ describe( 'stats/mean', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
+			var mean = initValue, delta = 0;
+			for ( var i = 0; i < numData; i++ ) {
+				delta = expected[ i ] - mean;
+				mean += delta / (i+1);
+			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], numData+initValue );
+			assert.deepEqual( actual[ 0 ], mean );
+		} // end FUNCTION onRead()
+	});
+
+	it( 'should count piped data using an arbitrary starting value number', function test() {
+		var numData = 1000,
+			expected = new Array( numData ),
+			reducer, rStream,
+			initValue = 1000;
+
+		// Simulate some data...
+		for ( var i = 0; i < numData; i++ ) {
+			expected[ i ] = Math.random();
+		}
+
+		// Create a new mean stream generator:
+		reducer = mStream();
+
+		// Set the initial value number and create a new stream:
+		rStream = reducer.numValues( initValue )
+			.stream();
+
+		// Mock reading from the stream:
+		utils.readStream( rStream, onRead );
+
+		// Mock piping a data to the stream:
+		utils.writeStream( expected, rStream );
+
+		return;
+
+		/**
+		* FUNCTION: onRead( error, actual )
+		*	Read event handler. Checks for errors and compares streamed data to expected data.
+		*/
+		function onRead( error, actual ) {
+			var mean = 0, delta = 0;
+			for ( var i = 0; i < numData; i++ ) {
+				delta = expected[ i ] - mean;
+				mean += delta / (initValue+i+1);
+			}
+			expect( error ).to.not.exist;
+			assert.deepEqual( actual[ 0 ], mean );
 		} // end FUNCTION onRead()
 	});
 

@@ -23,6 +23,7 @@ var expect = chai.expect,
 // TESTS //
 
 describe( 'stats/max', function tests() {
+	'use strict';
 
 	it( 'should export a factory function', function test() {
 		expect( mStream ).to.be.a( 'function' );
@@ -42,7 +43,7 @@ describe( 'stats/max', function tests() {
 	it( 'should return the maximum value of piped data', function test() {
 		var numData = 1000,
 			expected = new Array( numData ),
-			rStream;
+			rStream, s;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {

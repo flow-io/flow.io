@@ -32,6 +32,8 @@ function test_property( name ) {
 // TESTS //
 
 describe( 'flow.io', function tests() {
+	'use strict';
+
 	var properties = [
 			'read',
 			'write',
