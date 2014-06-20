@@ -13,6 +13,7 @@ Todos.
 6. 	individualize
 7. 	serverify
 8. 	use through2 (?)
+9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? 
 
 
 ### Streams
@@ -52,7 +53,7 @@ Todos.
 4. 	Filters.eOutliers
 5. 	Stats.covariance
 6. 	Stats.histc
-7. 	Stats.iqr
+7. 	
 8. 	Stats.kde
 9. 	Stats.kurtosis
 10. Filters.mOutliers
