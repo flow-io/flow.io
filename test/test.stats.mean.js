@@ -80,6 +80,7 @@ describe( 'stats/mean', function tests() {
 		var data, reducer, rStream,
 			MEAN = 10000,
 			NUMVALUES = 100,
+			INIT = MEAN,
 			sum;
 
 		// Simulate some data...
@@ -96,7 +97,7 @@ describe( 'stats/mean', function tests() {
 
 		// Set the initial mean and create a new stream:
 		rStream = reducer
-			.value( MEAN )
+			.value( INIT )
 			.numValues( NUMVALUES )
 			.stream();
 

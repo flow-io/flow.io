@@ -59,15 +59,19 @@ describe( 'stats/variance', function tests() {
 		assert.strictEqual( rStream.mean(), 5 );
 	});
 
-	it( 'should calculate the variance of piped data', function test() {
-		var numData = 1000,
-			data = new Array( numData ),
-			rStream;
+	it( 'should calculate the variance of piped data', function test( done ) {
+		var data, rStream,
+			x2 = 0,
+			VARIANCE;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			data[ i ] = Math.random();
+		data = [ -1, 0, 1, -1, 0, 1, -1, 0, 1 ];
+
+		// E[X^2] - (E[X])^2; Here, E[X] = 0.
+		for ( var i = 0; i < data.length; i++ ) {
+			x2 += data[ i ] * data[ i ];
 		}
+		VARIANCE = x2 / ( data.length - 1 );
 
 		// Create a new variance stream:
 		rStream = vStream().stream();
@@ -85,39 +89,29 @@ describe( 'stats/variance', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var sos = 0,
-				mean = 0,
-				delta = 0,
-				variance;
-
-			for ( var i = 0; i < numData; i++ ) {
-				delta = data[ i ] - mean;
-				mean += delta / (i+1);
-				sos += delta * (data[i] - mean );
-			}
-			variance = sos / (numData-1);
-
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], variance );
+			assert.deepEqual( actual[ 0 ], VARIANCE );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should calculate the variance of piped data using an arbitrary starting sum of squared differences value', function test() {
-		var numData = 1000,
-			data = new Array( numData ),
-			reducer, rStream,
-			initValue = 500;
+	it( 'should calculate the variance of piped data using arbitrary starting values', function test( done ) {
+		var data, reducer, rStream,
+			MEAN = 0,
+			NUMVALUES = 100,
+			SOS = 99; // 100-1 to adjust for sample variance, which is greater than population variance
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			data[ i ] = Math.random() + 1000;
-		}
+		data = [ -1, 1, -1, 1, -1, 1, -1, 1, -1, 1 ];
 
 		// Create a new variance stream generator:
 		reducer = vStream();
 
 		// Set the initial mean and create a new stream:
-		rStream = reducer.value( initValue )
+		rStream = reducer
+			.value( SOS )
+			.mean( MEAN )
+			.numValues( NUMVALUES )
 			.stream();
 
 		// Mock reading from the stream:
@@ -133,116 +127,9 @@ describe( 'stats/variance', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var sos = initValue,
-				mean = 0,
-				delta = 0,
-				variance;
-
-			for ( var i = 0; i < numData; i++ ) {
-				delta = data[ i ] - mean;
-				mean += delta / (i+1);
-				sos += delta * (data[i] - mean );
-			}
-			variance = sos / (numData-1);
-
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], variance );
-		} // end FUNCTION onRead()
-	});
-
-	it( 'should calculate the variance of piped data using an arbitrary starting value number', function test() {
-		var numData = 1000,
-			data = new Array( numData ),
-			reducer, rStream,
-			initValue = 1000;
-
-		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			data[ i ] = Math.random();
-		}
-
-		// Create a new variance stream generator:
-		reducer = vStream();
-
-		// Set the initial value number and create a new stream:
-		rStream = reducer.numValues( initValue )
-			.stream();
-
-		// Mock reading from the stream:
-		utils.readStream( rStream, onRead );
-
-		// Mock piping a data to the stream:
-		utils.writeStream( data, rStream );
-
-		return;
-
-		/**
-		* FUNCTION: onRead( error, actual )
-		*	Read event handler. Checks for errors and compares streamed data to expected data.
-		*/
-		function onRead( error, actual ) {
-			var sos = 0,
-				mean = 0,
-				delta = 0,
-				variance;
-
-			for ( var i = 0; i < numData; i++ ) {
-				delta = data[ i ] - mean;
-				mean += delta / (initValue+i+1);
-				sos += delta * (data[i] - mean );
-			}
-			variance = sos / (initValue+numData-1);
-
-			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], variance );
-		} // end FUNCTION onRead()
-	});
-
-	it( 'should calculate the variance of piped data using an arbitrary starting mean value', function test() {
-		var numData = 1000,
-			data = new Array( numData ),
-			reducer, rStream,
-			initValue = 1000;
-
-		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			data[ i ] = Math.random();
-		}
-
-		// Create a new variance stream generator:
-		reducer = vStream();
-
-		// Set the initial mean value and create a new stream:
-		rStream = reducer.mean( initValue )
-			.stream();
-
-		// Mock reading from the stream:
-		utils.readStream( rStream, onRead );
-
-		// Mock piping a data to the stream:
-		utils.writeStream( data, rStream );
-
-		return;
-
-		/**
-		* FUNCTION: onRead( error, actual )
-		*	Read event handler. Checks for errors and compares streamed data to expected data.
-		*/
-		function onRead( error, actual ) {
-			var sos = 0,
-				mean = initValue,
-				delta = 0,
-				variance;
-
-			for ( var i = 0; i < numData; i++ ) {
-				delta = data[ i ] - mean;
-				mean += delta / (i+1);
-				sos += delta * (data[i] - mean );
-			}
-			variance = sos / (numData-1);
-
-			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], variance );
+			assert.closeTo( actual[ 0 ], 1 , 0.001 );
+			done();
 		} // end FUNCTION onRead()
 	});
 
