@@ -12,6 +12,7 @@ Todos.
 5. 	npm publish
 6. 	individualize
 7. 	serverify
+8. 	use through2 (?)
 
 
 ### Streams
