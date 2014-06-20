@@ -172,7 +172,7 @@ describe( 'find', function tests() {
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should find all piped complex data values satisfying multiple filter criteria', function test( done ) {
+	it( 'should find all complex piped data values satisfying multiple filter criteria', function test( done ) {
 		var data, expected, fStream, s;
 
 		// Simulate some data...
