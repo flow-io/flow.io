@@ -45,14 +45,14 @@ describe( 'stats/sum', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
-	it( 'should return the sum value of piped data', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			rStream, s;
+	it( 'should return the sum value of piped data', function test( done ) {
+		var data, rStream, s, SUM;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random() * 1000;
+		data = [ 4, 4, 5, 5, 4, 4, 2, 2, 5, 5, 10 ];
+		SUM = 0;
+		for ( var i = 0; i < data.length; i++ ) {
+			SUM += data[ i ];
 		}
 
 		// Create a new sum stream:
@@ -69,7 +69,7 @@ describe( 'stats/sum', function tests() {
 		rStream.on( 'close', s.validate );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -78,38 +78,36 @@ describe( 'stats/sum', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var sum = 0;
-			for ( var i = 0; i < expected.length; i++ ) {
-				sum += expected[ i ];
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], sum );
+			assert.deepEqual( actual[ 0 ], SUM );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should find the sum using an arbitrary starting value', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			reducer, rStream,
-			initValue = 10000;
+	it( 'should find the sum using an arbitrary starting value', function test( done ) {
+		var data, reducer, rStream,
+			SUM = 10000,
+			INIT = SUM;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random() * 1000;
+		data = [ 4, 4, 5, 5, 4, 4, 2, 2, 5, 5, 10 ];
+		for ( var i = 0; i < data.length; i++ ) {
+			SUM += data[ i ];
 		}
 
 		// Create a new sum stream generator:
 		reducer = sStream();
 
 		// Set the initial sum and create a new stream:
-		rStream = reducer.value( initValue )
+		rStream = reducer
+			.value( INIT )
 			.stream();
 
 		// Mock reading from the stream:
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -118,12 +116,9 @@ describe( 'stats/sum', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var sum = initValue;
-			for ( var i = 0; i < expected.length; i++ ) {
-				sum += expected[ i ];
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], sum );
+			assert.deepEqual( actual[ 0 ], SUM );
+			done();
 		} // end FUNCTION onRead()
 	});
 

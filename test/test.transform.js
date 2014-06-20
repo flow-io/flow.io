@@ -33,7 +33,7 @@ describe( 'transform', function tests() {
 		expect( stream ).to.throw( Error );
 	});
 
-	it( 'should allow for simple pass through', function test() {
+	it( 'should allow for simple pass through', function test( done ) {
 		var numData = 1000,
 			expected = new Array( numData ),
 			tStream,
@@ -72,10 +72,11 @@ describe( 'transform', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual, expected );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should allow for arbitrary transformations', function test() {
+	it( 'should allow for arbitrary transformations', function test( done ) {
 		var numData = 1000,
 			data = new Array( numData ),
 			expected = new Array( numData ),
@@ -121,6 +122,7 @@ describe( 'transform', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual, expected );
+			done();
 		} // end FUNCTION onRead()
 	});
 

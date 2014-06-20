@@ -48,15 +48,11 @@ describe( 'stats/mean', function tests() {
 		assert.strictEqual( rStream.numValues(), 5 );
 	});
 
-	it( 'should calculate the mean of piped data', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			rStream;
+	it( 'should calculate the mean of piped data', function test( done ) {
+		var data, rStream, MEAN = 3.5;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
-		}
+		data = [ 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5 ];
 
 		// Create a new mean stream:
 		rStream = mStream().stream();
@@ -65,7 +61,7 @@ describe( 'stats/mean', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -74,39 +70,41 @@ describe( 'stats/mean', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var mean = 0, delta = 0;
-			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
-				mean += delta / (i+1);
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], mean );
+			assert.closeTo( actual[ 0 ], MEAN, 0.001 );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should calculate the mean of piped data using an arbitrary starting mean value', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			reducer, rStream,
-			initValue = 1005;
+	it( 'should calculate the mean of piped data using an arbitrary starting mean value and corresponding number of values the mean represents', function test( done ) {
+		var data, reducer, rStream,
+			MEAN = 10000,
+			NUMVALUES = 100,
+			sum;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random() + 1000;
+		data = [ 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5 ];
+		
+		sum = MEAN * NUMVALUES;
+		for ( var i = 0; i < data.length; i++ ) {
+			sum += data[ i ];
 		}
-
+		MEAN = sum / (data.length+NUMVALUES);
+			
 		// Create a new mean stream generator:
 		reducer = mStream();
 
 		// Set the initial mean and create a new stream:
-		rStream = reducer.value( initValue )
+		rStream = reducer
+			.value( MEAN )
+			.numValues( NUMVALUES )
 			.stream();
 
 		// Mock reading from the stream:
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -115,54 +113,9 @@ describe( 'stats/mean', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var mean = initValue, delta = 0;
-			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
-				mean += delta / (i+1);
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], mean );
-		} // end FUNCTION onRead()
-	});
-
-	it( 'should count piped data using an arbitrary starting value number', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			reducer, rStream,
-			initValue = 1000;
-
-		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
-		}
-
-		// Create a new mean stream generator:
-		reducer = mStream();
-
-		// Set the initial value number and create a new stream:
-		rStream = reducer.numValues( initValue )
-			.stream();
-
-		// Mock reading from the stream:
-		utils.readStream( rStream, onRead );
-
-		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
-
-		return;
-
-		/**
-		* FUNCTION: onRead( error, actual )
-		*	Read event handler. Checks for errors and compares streamed data to expected data.
-		*/
-		function onRead( error, actual ) {
-			var mean = 0, delta = 0;
-			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
-				mean += delta / (initValue+i+1);
-			}
-			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], mean );
+			assert.closeTo( actual[ 0 ], MEAN, 0.0001 );
+			done();
 		} // end FUNCTION onRead()
 	});
 

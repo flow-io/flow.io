@@ -64,5 +64,5 @@ Todos.
 18. Stats.quantiles
 19. Stats.skewness
 20. 
-21. Stats.variance
+21. 
 22. Threshold

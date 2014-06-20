@@ -40,14 +40,14 @@ describe( 'stats/count', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
-	it( 'should count piped data', function test() {
+	it( 'should count piped data', function test( done ) {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			rStream, s;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			data[ i ] = Math.random();
 		}
 
 		// Create a new count stream:
@@ -64,7 +64,7 @@ describe( 'stats/count', function tests() {
 		rStream.on( 'close', s.validate );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -75,18 +75,19 @@ describe( 'stats/count', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual[ 0 ], numData );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should count piped data using an arbitrary starting value', function test() {
+	it( 'should count piped data using an arbitrary starting value', function test( done ) {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			reducer, rStream,
 			initValue = 999;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			data[ i ] = Math.random();
 		}
 
 		// Create a new count stream generator:
@@ -100,7 +101,7 @@ describe( 'stats/count', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -111,6 +112,7 @@ describe( 'stats/count', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual[ 0 ], numData+initValue );
+			done();
 		} // end FUNCTION onRead()
 	});
 

@@ -61,12 +61,12 @@ describe( 'stats/variance', function tests() {
 
 	it( 'should calculate the variance of piped data', function test() {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			rStream;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			data[ i ] = Math.random();
 		}
 
 		// Create a new variance stream:
@@ -76,7 +76,7 @@ describe( 'stats/variance', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -91,9 +91,9 @@ describe( 'stats/variance', function tests() {
 				variance;
 
 			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
+				delta = data[ i ] - mean;
 				mean += delta / (i+1);
-				sos += delta * (expected[i] - mean );
+				sos += delta * (data[i] - mean );
 			}
 			variance = sos / (numData-1);
 
@@ -104,13 +104,13 @@ describe( 'stats/variance', function tests() {
 
 	it( 'should calculate the variance of piped data using an arbitrary starting sum of squared differences value', function test() {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			reducer, rStream,
 			initValue = 500;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random() + 1000;
+			data[ i ] = Math.random() + 1000;
 		}
 
 		// Create a new variance stream generator:
@@ -124,7 +124,7 @@ describe( 'stats/variance', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -139,9 +139,9 @@ describe( 'stats/variance', function tests() {
 				variance;
 
 			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
+				delta = data[ i ] - mean;
 				mean += delta / (i+1);
-				sos += delta * (expected[i] - mean );
+				sos += delta * (data[i] - mean );
 			}
 			variance = sos / (numData-1);
 
@@ -152,13 +152,13 @@ describe( 'stats/variance', function tests() {
 
 	it( 'should calculate the variance of piped data using an arbitrary starting value number', function test() {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			reducer, rStream,
 			initValue = 1000;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			data[ i ] = Math.random();
 		}
 
 		// Create a new variance stream generator:
@@ -172,7 +172,7 @@ describe( 'stats/variance', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -187,9 +187,9 @@ describe( 'stats/variance', function tests() {
 				variance;
 
 			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
+				delta = data[ i ] - mean;
 				mean += delta / (initValue+i+1);
-				sos += delta * (expected[i] - mean );
+				sos += delta * (data[i] - mean );
 			}
 			variance = sos / (initValue+numData-1);
 
@@ -200,13 +200,13 @@ describe( 'stats/variance', function tests() {
 
 	it( 'should calculate the variance of piped data using an arbitrary starting mean value', function test() {
 		var numData = 1000,
-			expected = new Array( numData ),
+			data = new Array( numData ),
 			reducer, rStream,
 			initValue = 1000;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random();
+			data[ i ] = Math.random();
 		}
 
 		// Create a new variance stream generator:
@@ -220,7 +220,7 @@ describe( 'stats/variance', function tests() {
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -235,9 +235,9 @@ describe( 'stats/variance', function tests() {
 				variance;
 
 			for ( var i = 0; i < numData; i++ ) {
-				delta = expected[ i ] - mean;
+				delta = data[ i ] - mean;
 				mean += delta / (i+1);
-				sos += delta * (expected[i] - mean );
+				sos += delta * (data[i] - mean );
 			}
 			variance = sos / (numData-1);
 

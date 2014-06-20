@@ -29,7 +29,7 @@ describe( 'array', function tests() {
 		expect( stream ).to.be.a( 'function' );
 	});
 
-	it( 'should transform an array into a readable stream', function test() {
+	it( 'should transform an array into a readable stream', function test( done ) {
 		var numData = 1000,
 			expected = new Array( numData ),
 			aStream, s;
@@ -64,6 +64,7 @@ describe( 'array', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual, expected );
+			done();
 		} // end FUNCTION onRead()
 	});
 

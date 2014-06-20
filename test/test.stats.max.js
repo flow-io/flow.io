@@ -40,15 +40,12 @@ describe( 'stats/max', function tests() {
 		assert.strictEqual( rStream.value(), 5 );
 	});
 
-	it( 'should return the maximum value of piped data', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			rStream, s;
+	it( 'should return the maximum value of piped data', function test( done ) {
+		var data, rStream, s,
+			MAX = 10;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			expected[ i ] = Math.random() * 1000;
-		}
+		data = [ 5, 4, 3, 4, 2, 6, MAX, 3 ];
 
 		// Create a new max stream:
 		rStream = mStream().stream();
@@ -64,7 +61,7 @@ describe( 'stats/max', function tests() {
 		rStream.on( 'close', s.validate );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -73,43 +70,31 @@ describe( 'stats/max', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var max = Number.NEGATIVE_INFINITY,
-				value;
-			for ( var i = 0; i < expected.length; i++ ) {
-				value = expected[ i ];
-				if ( value > max ) {
-					max = value;
-				}
-			}
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], max );
+			assert.deepEqual( actual[ 0 ], MAX );
+			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should find the max using an arbitrary starting value', function test() {
-		var numData = 1000,
-			expected = new Array( numData ),
-			reducer, rStream,
-			initValue = 10000;
+	it( 'should find the max using an arbitrary starting value', function test( done ) {
+		var data, reducer, rStream,
+			MAX = 11;
 
 		// Simulate some data...
-		for ( var i = 0; i < numData; i++ ) {
-			// No value should ever exceed the initial max value ( expected[ i ] exists on the interval: [0,1000] ):
-			expected[ i ] = Math.random() * 1000;
-		}
+		data = [ 5, 4, 3, 4, 2, 6, 10, 3 ];
 
 		// Create a new max stream generator:
 		reducer = mStream();
 
 		// Set the initial max and create a new stream:
-		rStream = reducer.value( initValue )
+		rStream = reducer.value( MAX )
 			.stream();
 
 		// Mock reading from the stream:
 		utils.readStream( rStream, onRead );
 
 		// Mock piping a data to the stream:
-		utils.writeStream( expected, rStream );
+		utils.writeStream( data, rStream );
 
 		return;
 
@@ -119,7 +104,8 @@ describe( 'stats/max', function tests() {
 		*/
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], initValue );
+			assert.deepEqual( actual[ 0 ], MAX );
+			done();
 		} // end FUNCTION onRead()
 	});
 
