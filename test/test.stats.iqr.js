@@ -49,7 +49,7 @@ describe( 'stats/iqr', function tests() {
 		*/
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], 2 );
+			assert.strictEqual( actual[ 0 ], 2 );
 			done();
 		} // end FUNCTION onRead()
 	});
