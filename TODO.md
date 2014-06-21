@@ -13,7 +13,7 @@ Todos.
 6. 	individualize
 7. 	serverify
 8. 	use through2 (?)
-9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? --> yes. flow.read().stream( path, clbk )
+9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? --> yes. flow.read().stream( path, clbk ); api breaking.
 10. pipelines (snap together) 
 
 
