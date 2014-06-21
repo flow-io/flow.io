@@ -117,6 +117,66 @@ describe( 'stats/pcc', function tests() {
 		}
 	});
 
+	it( 'should provide a method to get all data accessors', function test() {
+		var rStream = cStream();
+		expect( rStream.accessors() ).to.be.an( 'object' );
+	});
+
+	it( 'should not provide any default accessors', function test() {
+		var rStream = cStream();
+		expect( rStream.accessors() ).to.be.empty;
+	});
+
+	it( 'should provide a method to set data accessors', function test() {
+		var rStream = cStream(),
+			x = function ( d ) {
+				return d.x;
+			},
+			y =  function ( d ) {
+				return d.y;
+			};
+
+		rStream.accessors( 'x', x )
+			.accessors( 'y', y );
+
+		assert.deepEqual( rStream.accessors(), {
+			'x': x,
+			'y': y
+		});
+	});
+
+	it( 'should provide a method to get a specific data accessor', function test() {
+		var rStream = cStream(),
+			x = function ( d ) {
+				return d.x;
+			},
+			y =  function ( d ) {
+				return d.y;
+			};
+
+		rStream.accessors( 'x', x )
+			.accessors( 'y', y );
+
+		assert.strictEqual( rStream.accessors( 'x' ), x );
+	});
+
+	it( 'should return undefined when attempting to get a data accessor which does not exist', function test() {
+		var rStream = cStream();
+
+		assert.isUndefined( rStream.accessors( 'd' ) );
+	});
+
+	it( 'should throw an error if one attempts to set a data accessor to something other than a function', function test() {
+		var rStream = cStream(),
+			x = 'x';
+
+		expect( setAccessor ).to.throw( Error );
+
+		function setAccessor() {
+			rStream.accessors( 'x', x );
+		}
+	});
+
 	it( 'should compute the Pearson product-moment correlation coefficient of piped data', function test( done ) {
 		var data, expected, rStream;
 		
