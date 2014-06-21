@@ -119,8 +119,7 @@ describe( 'stats/pcc', function tests() {
 
 	it( 'should compute the Pearson product-moment correlation coefficient of piped data', function test( done ) {
 		var data, expected, rStream;
-		done();
-		return;
+		
 		// Simulate some data...
 		data = [
 			[ 1, -1 ],
@@ -137,7 +136,10 @@ describe( 'stats/pcc', function tests() {
 		];
 
 		// Datasets should have unit variance and should be negatively correlated:
-		expected = [ 1, -1, -1, 1 ];
+		expected = [
+			[ 1, -1 ],
+			[ -1, 1 ]
+		];
 
 		// Create a new correlation coefficient stream:
 		rStream = cStream()
@@ -163,7 +165,7 @@ describe( 'stats/pcc', function tests() {
 		*/
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
-			assert.deepEqual( JSON.parse( actual ), expected );
+			assert.deepEqual( actual[ 0 ], expected );
 			done();
 		} // end FUNCTION onRead()
 	});
