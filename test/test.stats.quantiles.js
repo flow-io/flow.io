@@ -92,7 +92,7 @@ describe( 'stats/quantiles', function tests() {
 		*/
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
-			assert.deepEqual( JSON.parse( actual ), expected );
+			assert.deepEqual( actual[ 0 ], expected );
 			done();
 		} // end FUNCTION onRead()
 	});
