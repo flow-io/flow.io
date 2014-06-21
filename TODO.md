@@ -51,7 +51,7 @@ Todos.
 ### Tests
 
 1. 	
-2. 	
+2. 	Filters.mOutliers
 3. 	Filters.outliers
 4. 	Filters.eOutliers
 5. 	Stats.covariance
@@ -59,7 +59,7 @@ Todos.
 7. 	
 8. 	Stats.kde
 9. 	Stats.kurtosis
-10. Filters.mOutliers
+10. 
 11. 
 12. 
 13. 
