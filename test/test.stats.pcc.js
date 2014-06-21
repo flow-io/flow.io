@@ -17,6 +17,34 @@ var expect = chai.expect,
 	assert = chai.assert;
 
 
+// FUNCTIONS //
+
+/**
+* FUNCTION: randn( length )
+*	Generate normally distributed random numbers. Implementation: Box-Muller method.
+*
+* @private
+* @param {number} length - (optional) number of random variates to generate; default: 1
+* @returns {array|number} array of random normal variates or a single random normal variate
+*/
+function randn( length ) {
+	var urand, vrand,
+		numValues = length || 1,
+		vec = new Array( numValues );
+
+	for ( var i = 0; i < numValues; i++ ) {
+		urand = Math.random();
+		vrand = Math.random();
+		vec[ i ] = Math.sqrt( -2*Math.log( urand ) ) * Math.cos( 2*Math.PI*vrand );
+	} // end FOR i
+
+	if ( numValues === 1 ) {
+		return vec[0];
+	}
+	return vec;
+} // end FUNCTION randn()
+
+
 // TESTS //
 
 describe( 'stats/pcc', function tests() {
@@ -286,6 +314,58 @@ describe( 'stats/pcc', function tests() {
 		function onRead( error, actual ) {
 			expect( error ).to.not.exist;
 			assert.deepEqual( actual[ 0 ], expected );
+			done();
+		} // end FUNCTION onRead()
+	});
+
+	it( 'should compute the Pearson product-moment correlation coefficient of (uncorrelated) piped data', function test( done ) {
+		var numData = 10000,
+			data = new Array( numData ),
+			expected, rStream;
+		
+		// Simulate some data...
+		for ( var i = 0; i < numData; i++ ) {
+			data[ i ] = [ randn(), randn() ];
+		}
+
+		// Datasets should have unit variance and should be (approximately) uncorrelated (law of large numbers):
+		expected = [
+			[ 1, 0 ],
+			[ 0, 1 ]
+		];
+
+		// Create a new correlation coefficient stream:
+		rStream = cStream()
+			.accessors( 'd1', function ( d ) {
+				return d[ 0 ];
+			})
+			.accessors( 'd2', function ( d ) {
+				return d[ 1 ];
+			})
+			.stream();
+
+		// Mock reading from the stream:
+		utils.readStream( rStream, onRead );
+
+		// Mock piping a data to the stream:
+		utils.writeStream( data, rStream );
+
+		return;
+
+		/**
+		* FUNCTION: onRead( error, actual )
+		*	Read event handler. Checks for errors and compares streamed data to expected data.
+		*/
+		function onRead( error, actual ) {
+			var corr = actual[ 0 ];
+
+			expect( error ).to.not.exist;
+
+			assert.closeTo( corr[0][0], expected[0][0], 0.05 );
+			assert.closeTo( corr[0][1], expected[0][1], 0.05 );
+			assert.closeTo( corr[1][0], expected[1][0], 0.05 );
+			assert.closeTo( corr[1][1], expected[1][1], 0.05 );
+
 			done();
 		} // end FUNCTION onRead()
 	});
