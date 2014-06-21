@@ -75,13 +75,20 @@ describe( 'filter/nan', function tests() {
 	});
 
 	it( 'should throw an error if one attempts to set a data accessor to something other than a function', function test() {
-		var fStream = nStream(),
-			x = 'x';
+		var fStream = nStream();
 
-		expect( setAccessor ).to.throw( Error );
+		expect( badAccessor( '5' ) ).to.throw( Error );
+		expect( badAccessor( 5 ) ).to.throw( Error );
+		expect( badAccessor( [] ) ).to.throw( Error );
+		expect( badAccessor( {} ) ).to.throw( Error );
+		expect( badAccessor( null ) ).to.throw( Error );
+		expect( badAccessor( undefined ) ).to.throw( Error );
+		expect( badAccessor( NaN ) ).to.throw( Error );
 
-		function setAccessor() {
-			fStream.accessors( 'x', x );
+		function badAccessor( value ) {
+			return function() {
+				fStream.accessors( 'x', value );
+			};
 		}
 	});
 

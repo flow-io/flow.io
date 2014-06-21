@@ -167,13 +167,20 @@ describe( 'stats/pcc', function tests() {
 	});
 
 	it( 'should throw an error if one attempts to set a data accessor to something other than a function', function test() {
-		var rStream = cStream(),
-			x = 'x';
+		var rStream = cStream();
 
-		expect( setAccessor ).to.throw( Error );
+		expect( badAccessor( '5' ) ).to.throw( Error );
+		expect( badAccessor( 5 ) ).to.throw( Error );
+		expect( badAccessor( [] ) ).to.throw( Error );
+		expect( badAccessor( {} ) ).to.throw( Error );
+		expect( badAccessor( null ) ).to.throw( Error );
+		expect( badAccessor( undefined ) ).to.throw( Error );
+		expect( badAccessor( NaN ) ).to.throw( Error );
 
-		function setAccessor() {
-			rStream.accessors( 'x', x );
+		function badAccessor( value ) {
+			return function() {
+				rStream.accessors( 'x', value );
+			};
 		}
 	});
 
