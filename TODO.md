@@ -14,7 +14,8 @@ Todos.
 7. 	serverify
 8. 	use through2 (?)
 9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? --> yes. flow.read().stream( path, clbk ); api breaking.
-10. pipelines (snap together) 
+10. pipelines (snap together)
+11. move stringification out of stats streams; if process needs stringified values, transformer( stringify ) 
 
 
 ### Streams
