@@ -67,7 +67,7 @@ Todos.
 14. Stats.mmean
 15. Stats.mva
 16. Stats.mvariance
-17. Stats.pcc
+17. 
 18. 
 19. Stats.skewness
 20. 

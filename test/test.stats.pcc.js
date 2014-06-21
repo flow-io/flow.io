@@ -184,7 +184,7 @@ describe( 'stats/pcc', function tests() {
 		}
 	});
 
-	it( 'should compute the Pearson product-moment correlation coefficient of piped data', function test( done ) {
+	it( 'should compute the Pearson product-moment correlation coefficient of (negatively correlated) piped data', function test( done ) {
 		var data, expected, rStream;
 		
 		// Simulate some data...
@@ -206,6 +206,59 @@ describe( 'stats/pcc', function tests() {
 		expected = [
 			[ 1, -1 ],
 			[ -1, 1 ]
+		];
+
+		// Create a new correlation coefficient stream:
+		rStream = cStream()
+			.accessors( 'd1', function ( d ) {
+				return d[ 0 ];
+			})
+			.accessors( 'd2', function ( d ) {
+				return d[ 1 ];
+			})
+			.stream();
+
+		// Mock reading from the stream:
+		utils.readStream( rStream, onRead );
+
+		// Mock piping a data to the stream:
+		utils.writeStream( data, rStream );
+
+		return;
+
+		/**
+		* FUNCTION: onRead( error, actual )
+		*	Read event handler. Checks for errors and compares streamed data to expected data.
+		*/
+		function onRead( error, actual ) {
+			expect( error ).to.not.exist;
+			assert.deepEqual( actual[ 0 ], expected );
+			done();
+		} // end FUNCTION onRead()
+	});
+
+	it( 'should compute the Pearson product-moment correlation coefficient of (positively correlated) piped data', function test( done ) {
+		var data, expected, rStream;
+		
+		// Simulate some data...
+		data = [
+			[ 1, 1 ],
+			[ 0, 0 ],
+			[ -1, -1 ],
+			[ 0, 0 ],
+			[ 1, 1 ],
+			[ 0, 0 ],
+			[ -1, -1 ],
+			[ 0, 0 ],
+			[ 1, 1 ],
+			[ 0, 0 ],
+			[ -1, -1 ]
+		];
+
+		// Datasets should have unit variance and should be positively correlated:
+		expected = [
+			[ 1, 1 ],
+			[ 1, 1 ]
 		];
 
 		// Create a new correlation coefficient stream:
