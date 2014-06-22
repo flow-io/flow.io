@@ -64,7 +64,7 @@ Todos.
 11. 
 12. 
 13. 
-14. Stats.mmean
+14. Stats.mmean (need to add case where window size exceeds stream length)
 15. Stats.mva
 16. Stats.mvariance
 17. 
