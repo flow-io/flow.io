@@ -63,8 +63,17 @@ describe( 'stats/histc', function tests() {
 		// Simulate some data...
 		data = [ 1, 1, 1, 2, 3, 3, 3, 3, 4 ];
 
-		// Expected counts (counts also returns negative and positive infinity bins which include data which does not fall into any bin defined by edges):
-		expected = [ 0, 3, 1, 4, 1, 0, 0 ];
+		// Expected counts (histc also returns negative and positive infinity bins which include data which does not fall into any bin defined by the edge vector):
+		expected = [
+			[ Number.NEGATIVE_INFINITY, 0, -0.5 ], // -infinity
+			[ -0.5, 0, 0.5 ],
+			[ 0.5, 3, 1.5 ],
+			[ 1.5, 1, 2.5 ],
+			[ 2.5, 4, 3.5 ],
+			[ 3.5, 1, 4.5 ],
+			[ 4.5, 0, 5.5 ],
+			[ 5.5, 0, Number.POSITIVE_INFINITY ] // +infinity
+		];
 
 		// Create a new histc stream:
 		rStream = hStream()
