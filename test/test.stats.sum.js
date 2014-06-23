@@ -29,14 +29,9 @@ describe( 'stats/sum', function tests() {
 		expect( sStream ).to.be.a( 'function' );
 	});
 
-	it ( 'should have an initial accumulator value of 0', function test() {
-		var rStream = sStream();
-		assert.strictEqual( rStream._value, 0 );
-	});
-
 	it( 'should provide a method to get the initial accumulator value', function test() {
 		var rStream = sStream();
-		assert.strictEqual( rStream.value(), 0 );
+		expect( rStream.value() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to set the initial accumulator value', function test() {
