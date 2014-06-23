@@ -39,7 +39,7 @@ describe( 'stats/histc', function tests() {
 		assert.deepEqual( rStream.edges(), expected );
 	});
 
-	it( 'should not allow edges to be set as a non-array ', function test() {
+	it( 'should not allow edges to be set as a non-array', function test() {
 		var rStream = hStream();
 		
 		expect( badValue( '5' ) ).to.throw( Error );

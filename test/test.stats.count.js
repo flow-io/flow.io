@@ -31,13 +31,30 @@ describe( 'stats/count', function tests() {
 
 	it( 'should provide a method to get the initial accumulator value', function test() {
 		var rStream = cStream();
-		assert.strictEqual( rStream.value(), 0 );
+		expect( rStream.value() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to set the initial accumulator value', function test() {
 		var rStream = cStream();
 		rStream.value( 5 );
 		assert.strictEqual( rStream.value(), 5 );
+	});
+
+	it( 'should not allow a non-numeric initial accumulator value', function test() {
+		var rStream = cStream();
+		
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
+
+		function badValue( value ) {
+			return function() {
+				rStream.value( value );
+			};
+		}
 	});
 
 	it( 'should count piped data', function test( done ) {
