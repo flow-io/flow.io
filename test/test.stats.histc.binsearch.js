@@ -28,7 +28,7 @@ describe( 'stats/histc/binsearch', function tests() {
 		expect( function() { binsearch([]); } ).to.throw( Error );
 	});
 
-	it ( 'should take a 1d array which defines the bin edges as its first argument', function test() {
+	it( 'should take a 1d array which defines the bin edges as its first argument', function test() {
 		expect( badValue( '5' ) ).to.throw( Error );
 		expect( badValue( 99 ) ).to.throw( Error );
 		expect( badValue( {} ) ).to.throw( Error );
@@ -43,7 +43,7 @@ describe( 'stats/histc/binsearch', function tests() {
 		}
 	});
 
-	it ( 'should take a numeric value as its second argument', function test() {
+	it( 'should take a numeric value as its second argument', function test() {
 		expect( badValue( '5' ) ).to.throw( Error );
 		expect( badValue( [] ) ).to.throw( Error );
 		expect( badValue( {} ) ).to.throw( Error );
@@ -56,6 +56,27 @@ describe( 'stats/histc/binsearch', function tests() {
 				binsearch( [], value );
 			};
 		}
+	});
+
+	it( 'should return a bin index corresponding to the value\'s bin', function test() {
+		var edges = [ 0.5, 1.5, 2.5, 3.5, 4.5, 5.5 ],
+			value = 2;
+
+		assert.strictEqual( binsearch( edges, value ), 1 );
+	});
+
+	it( 'should return -1 when a value is less than the min edge', function test() {
+		var edges = [ 0.5, 1.5, 2.5, 3.5, 4.5, 5.5 ],
+			value = 0;
+
+		assert.strictEqual( binsearch( edges, value ), -1 );
+	});
+
+	it( 'should return the index of the max edge when a value is greater than the max edge', function test() {
+		var edges = [ 0.5, 1.5, 2.5, 3.5, 4.5, 5.5 ],
+			value = 6;
+
+		assert.strictEqual( binsearch( edges, value ), 5 );
 	});
 
 });
