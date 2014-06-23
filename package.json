@@ -13,7 +13,7 @@
     }
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "main": "./lib",
   "repository": {
@@ -36,7 +36,8 @@
     "event-stream": "~3.1.5",
     "through": "~2.3.4",
     "stream-combiner": "~0.2.0",
-    "graceful-fs": "~3.0.2"
+    "graceful-fs": "~3.0.2",
+    "binsearch": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
