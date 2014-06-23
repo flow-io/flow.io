@@ -15,7 +15,8 @@ Todos.
 8. 	use through2 (?)
 9. 	should all streams (e.g., file read and write) conform to same interface as stats streams? --> yes. flow.read().stream( path, clbk ); api breaking.
 10. pipelines (snap together; nyt)
-11. if process needs stringified values, transformer( stringify ) 
+11. if process needs stringified values, transformer( stringify )
+12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
 
 
 ### Streams
@@ -64,7 +65,7 @@ Todos.
 11. 
 12. 
 13. 
-14. Stats.mmean (need to add case where window size exceeds stream length)
+14. 
 15. Stats.mva
 16. Stats.mvariance
 17. 
