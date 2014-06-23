@@ -28,7 +28,7 @@ describe( 'stats/mean', function tests() {
 
 	it( 'should provide a method to get the window size', function test() {
 		var tStream = mStream();
-		assert.strictEqual( tStream.window(), 5 );
+		expect( tStream.window() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to set the window size', function test() {
