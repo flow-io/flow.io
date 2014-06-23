@@ -57,7 +57,7 @@ Todos.
 3. 	Filters.outliers
 4. 	Filters.eOutliers
 5. 	Stats.covariance
-6. 	Stats.histc
+6. 	
 7. 	
 8. 	Stats.kde
 9. 	Stats.kurtosis
