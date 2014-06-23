@@ -28,17 +28,17 @@ describe( 'stats/variance', function tests() {
 
 	it( 'should provide a method to get the initial accumulator value', function test() {
 		var rStream = vStream();
-		assert.strictEqual( rStream.value(), 0 );
+		expect( rStream.value() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to get the initial accumulator value number', function test() {
 		var rStream = vStream();
-		assert.strictEqual( rStream.numValues(), 0 );
+		expect( rStream.numValues() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to get the initial accumulator mean', function test() {
 		var rStream = vStream();
-		assert.strictEqual( rStream.mean(), 0 );
+		expect( rStream.mean() ).to.be.a( 'number' );
 	});
 
 	it( 'should provide a method to set the initial accumulator value', function test() {
