@@ -8,7 +8,7 @@ var // Expectation library:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	cStream = require( './../lib/stats/pcc' );
+	cStream = require( './../lib/stats/covariance' );
 
 
 // VARIABLES //
@@ -47,7 +47,7 @@ function randn( length ) {
 
 // TESTS //
 
-describe( 'stats/pcc', function tests() {
+describe( 'stats/covariance', function tests() {
 	'use strict';
 
 	it( 'should export a factory function', function test() {
@@ -212,31 +212,25 @@ describe( 'stats/pcc', function tests() {
 		}
 	});
 
-	it( 'should compute the Pearson product-moment correlation coefficient of (negatively correlated) piped data', function test( done ) {
-		var data, expected, rStream;
+	it( 'should compute the covariance of (negatively correlated) piped data', function test( done ) {
+		var numData = 10000,
+			data = new Array( numData ),
+			rand,
+			expected, rStream;
 		
 		// Simulate some data...
-		data = [
-			[ 1, -1 ],
-			[ 0, 0 ],
-			[ -1, 1 ],
-			[ 0, 0 ],
-			[ 1, -1 ],
-			[ 0, 0 ],
-			[ -1, 1 ],
-			[ 0, 0 ],
-			[ 1, -1 ],
-			[ 0, 0 ],
-			[ -1, 1 ]
-		];
+		for ( var i = 0; i < numData; i++ ) {
+			rand = randn();
+			data[ i ] = [ rand, -rand ];
+		}
 
-		// Datasets should be negatively correlated:
+		// Datasets should have unit variance and should be negatively correlated:
 		expected = [
 			[ 1, -1 ],
 			[ -1, 1 ]
 		];
 
-		// Create a new correlation coefficient stream:
+		// Create a new covariance stream:
 		rStream = cStream()
 			.accessors( 'd1', function ( d ) {
 				return d[ 0 ];
@@ -259,37 +253,38 @@ describe( 'stats/pcc', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
+			var cov = actual[ 0 ];
+
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], expected );
+
+			assert.closeTo( cov[0][0], expected[0][0], 0.05 );
+			assert.closeTo( cov[0][1], expected[0][1], 0.05 );
+			assert.closeTo( cov[1][0], expected[1][0], 0.05 );
+			assert.closeTo( cov[1][1], expected[1][1], 0.05 );
+
 			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should compute the Pearson product-moment correlation coefficient of (positively correlated) piped data', function test( done ) {
-		var data, expected, rStream;
+	it( 'should compute the covariance of (positively correlated) piped data', function test( done ) {
+		var numData = 10000,
+			data = new Array( numData ),
+			rand,
+			expected, rStream;
 		
 		// Simulate some data...
-		data = [
-			[ 1, 1 ],
-			[ 0, 0 ],
-			[ -1, -1 ],
-			[ 0, 0 ],
-			[ 1, 1 ],
-			[ 0, 0 ],
-			[ -1, -1 ],
-			[ 0, 0 ],
-			[ 1, 1 ],
-			[ 0, 0 ],
-			[ -1, -1 ]
-		];
+		for ( var i = 0; i < numData; i++ ) {
+			rand = randn();
+			data[ i ] = [ rand, rand ];
+		}
 
-		// Datasets should be positively correlated:
+		// Datasets should have unit variance and should be positively correlated:
 		expected = [
 			[ 1, 1 ],
 			[ 1, 1 ]
 		];
 
-		// Create a new correlation coefficient stream:
+		// Create a new covariance stream:
 		rStream = cStream()
 			.accessors( 'd1', function ( d ) {
 				return d[ 0 ];
@@ -312,13 +307,20 @@ describe( 'stats/pcc', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
+			var cov = actual[ 0 ];
+
 			expect( error ).to.not.exist;
-			assert.deepEqual( actual[ 0 ], expected );
+
+			assert.closeTo( cov[0][0], expected[0][0], 0.05 );
+			assert.closeTo( cov[0][1], expected[0][1], 0.05 );
+			assert.closeTo( cov[1][0], expected[1][0], 0.05 );
+			assert.closeTo( cov[1][1], expected[1][1], 0.05 );
+
 			done();
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should compute the Pearson product-moment correlation coefficient of (uncorrelated) piped data', function test( done ) {
+	it( 'should compute the covariance of (uncorrelated) piped data', function test( done ) {
 		var numData = 10000,
 			data = new Array( numData ),
 			expected, rStream;
@@ -357,14 +359,14 @@ describe( 'stats/pcc', function tests() {
 		*	Read event handler. Checks for errors and compares streamed data to expected data.
 		*/
 		function onRead( error, actual ) {
-			var corr = actual[ 0 ];
+			var cov = actual[ 0 ];
 
 			expect( error ).to.not.exist;
 
-			assert.closeTo( corr[0][0], expected[0][0], 0.05 );
-			assert.closeTo( corr[0][1], expected[0][1], 0.05 );
-			assert.closeTo( corr[1][0], expected[1][0], 0.05 );
-			assert.closeTo( corr[1][1], expected[1][1], 0.05 );
+			assert.closeTo( cov[0][0], expected[0][0], 0.05 );
+			assert.closeTo( cov[0][1], expected[0][1], 0.05 );
+			assert.closeTo( cov[1][0], expected[1][0], 0.05 );
+			assert.closeTo( cov[1][1], expected[1][1], 0.05 );
 
 			done();
 		} // end FUNCTION onRead()

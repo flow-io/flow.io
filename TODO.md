@@ -17,6 +17,7 @@ Todos.
 10. pipelines (snap together; nyt)
 11. if process needs stringified values, transformer( stringify )
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
+13. move KDE and pdf to separate npmodules
 
 
 ### Streams
