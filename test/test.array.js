@@ -11,7 +11,7 @@ var // Expectation library:
 	utils = require( './utils' ),
 
 	// Module to be tested:
-	stream = require( './../lib/array' );
+	aStream = require( './../lib/array' );
 
 
 // VARIABLES //
@@ -26,13 +26,13 @@ describe( 'array', function tests() {
 	'use strict';
 
 	it( 'should export a factory function', function test() {
-		expect( stream ).to.be.a( 'function' );
+		expect( aStream ).to.be.a( 'function' );
 	});
 
 	it( 'should transform an array into a readable stream', function test( done ) {
 		var numData = 1000,
 			expected = new Array( numData ),
-			aStream, s;
+			tStream, s;
 
 		// Simulate some data...
 		for ( var i = 0; i < numData; i++ ) {
@@ -40,20 +40,20 @@ describe( 'array', function tests() {
 		}
 
 		// Create a new array stream:
-		aStream = stream();
+		tStream = aStream().stream();
 
 		// Create the stream spec:
-		s = spec( aStream )
+		s = spec( tStream )
 			.through();
 
 		// Mock reading from the stream:
-		utils.readStream( aStream, onRead );
+		utils.readStream( tStream, onRead );
 
 		// Validate the stream when the stream closes:
-		aStream.on( 'close', s.validate );
+		tStream.on( 'close', s.validate );
 
 		// Mock piping a single array to the stream:
-		utils.writeStream( [ expected ], aStream );
+		utils.writeStream( [ expected ], tStream );
 
 		return;
 
