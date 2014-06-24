@@ -57,7 +57,7 @@ Todos.
 2. 	Filters.mOutliers
 3. 	Filters.outliers
 4. 	Filters.eOutliers
-5. 	Stats.covariance
+5. 	
 6. 	
 7. 	
 8. 	Stats.kde
