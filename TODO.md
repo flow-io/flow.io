@@ -48,7 +48,7 @@ Todos.
 24. find first([num])
 25. find last([num])
 26. sort (sink)
-27. 
+27. aggregate (round-robbin?)
 
 
 ### Tests
