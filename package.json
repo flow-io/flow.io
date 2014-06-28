@@ -39,7 +39,8 @@
     "graceful-fs": "~3.0.2",
     "binsearch": "~0.0.0",
     "flow-array": "~0.0.0",
-    "flow-reduce": "~0.0.0"
+    "flow-reduce": "~0.0.0",
+    "flow-count": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",

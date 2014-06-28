@@ -18,6 +18,7 @@ Todos.
 11. if process needs stringified values, transformer( stringify )
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
 13. move KDE and pdf to separate npmodules
+14. flow-server (workerfy)
 
 
 ### Streams
@@ -49,6 +50,13 @@ Todos.
 25. find last([num])
 26. sort (sink)
 27. aggregate (round-robbin?)
+28. random emitter (e.g., random sampling; biased coin flip)
+29. Poisson emitter (Substack's on-the-fly adjust)
+30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
+31. unique (value hash; reducer version; emitter version)
+32. downsample (input data: [time,value])
+33. rate (/s)
+34. connectors (tsd,elastic)
 
 
 ### Tests
