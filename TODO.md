@@ -53,7 +53,7 @@ Todos.
 28. random emitter (e.g., random sampling; biased coin flip)
 29. Poisson emitter (Substack's on-the-fly adjust)
 30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
-31. unique (value hash; reducer version; emitter version)
+31. unique (filter?) (value hash; reducer version; emitter version)
 32. downsample (input data: [time,value])
 33. rate (/s)
 34. connectors (tsd,elastic)
