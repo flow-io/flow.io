@@ -69,6 +69,12 @@ describe( 'find', function tests() {
 		}
 	});
 
+	it( 'should throw an error if a filter is not set before attempting to create a find stream', function test() {
+		var fStream = findStream();
+
+		expect( fStream.stream ).to.throw( Error );
+	});
+
 	it( 'should find all piped data values satisfying filter criteria', function test( done ) {
 		var data, expected, fStream, s;
 
