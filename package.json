@@ -48,7 +48,8 @@
     "flow-mean": "~0.0.0",
     "flow-variance": "~0.0.0",
     "flow-median": "~0.0.0",
-    "flow-quantiles": "~0.0.0"
+    "flow-quantiles": "~0.0.0",
+    "flow-iqr": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
