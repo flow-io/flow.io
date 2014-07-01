@@ -51,6 +51,7 @@
     "flow-iqr": "~0.0.0",
     "flow-histc": "~0.0.0",
     "flow-covariance": "~0.0.0",
+    "flow-pcc": "~0.0.0",
     "flow-nans": "~0.0.0"
   },
   "devDependencies": {
