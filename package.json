@@ -45,7 +45,9 @@
     "flow-sum": "~0.0.0",
     "flow-min": "~0.0.0",
     "flow-max": "~0.0.0",
-    "flow-mean": "~0.0.0"
+    "flow-mean": "~0.0.0",
+    "flow-variance": "~0.0.0",
+    "flow-median": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
