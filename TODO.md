@@ -57,6 +57,7 @@ Todos.
 32. downsample (input data: [time,value])
 33. rate (/s) --> thlorenz; stream-spy?
 34. connectors (tsd,elastic)
+35. simplify find (only 1 filter function needed)
 
 
 ### Tests

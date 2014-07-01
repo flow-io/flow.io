@@ -29,59 +29,43 @@ describe( 'find', function tests() {
 		expect( findStream ).to.be.a( 'function' );
 	});
 
-	it( 'should provide a method to get all data filters', function test() {
+	it( 'should provide a method to get the data filter', function test() {
 		var fStream = findStream();
-		expect( fStream.filters() ).to.be.an( 'object' );
+		expect( fStream.filter ).to.be.a( 'function' );
 	});
 
-	it( 'should not provide any default filters', function test() {
+	it( 'should not provide a default filter', function test() {
 		var fStream = findStream();
-		expect( fStream.filters() ).to.be.empty;
+		assert.isNull( fStream.filter() );
 	});
 
-	it( 'should provide a method to set data filters', function test() {
+	it( 'should provide a method to set the data filter', function test() {
 		var fStream = findStream(),
-			x = function ( d ) {
+			filter = function ( d ) {
 				return ( d.x > 10 );
-			},
-			y =  function ( d ) {
-				return ( d.y === 1 );
 			};
 
-		fStream.filters( 'x', x )
-			.filters( 'y', y );
+		fStream.filter( filter );
 
-		assert.deepEqual( fStream.filters(), {
-			'x': x,
-			'y': y
-		});
+		assert.deepEqual( fStream.filter(), filter );
 	});
 
-	it( 'should provide a method to get a specific data filter', function test() {
-		var fStream = findStream(),
-			x = function ( d ) {
-				return ( d.x % 2 );
-			};
-
-		fStream.filters( 'x', x );
-
-		assert.strictEqual( fStream.filters( 'x' ), x );
-	});
-
-	it( 'should return undefined when attempting to get a data filter which does not exist', function test() {
+	it( 'should throw an error if one attempts to set the data filter to something other than a function', function test() {
 		var fStream = findStream();
 
-		assert.isUndefined( fStream.filters( 'd' ) );
-	});
+		expect( badValue( 5 ) ).to.throw( Error );
+		expect( badValue( '5' ) ).to.throw( Error );
+		expect( badValue( null ) ).to.throw( Error );
+		expect( badValue( undefined ) ).to.throw( Error );
+		expect( badValue( true ) ).to.throw( Error );
+		expect( badValue( [] ) ).to.throw( Error );
+		expect( badValue( {} ) ).to.throw( Error );
+		expect( badValue( NaN ) ).to.throw( Error );
 
-	it( 'should throw an error if one attempts to set a data filter to something other than a function', function test() {
-		var fStream = findStream(),
-			x = {};
-
-		expect( setFilter ).to.throw( Error );
-
-		function setFilter() {
-			fStream.filters( 'x', x );
+		function badValue( value ) {
+			return function() {
+				fStream.filter( value );
+			};
 		}
 	});
 
@@ -96,7 +80,7 @@ describe( 'find', function tests() {
 
 		// Create a new find stream:
 		fStream = findStream()
-			.filters( 'd', function ( d ) {
+			.filter( function ( d ) {
 				return ( d >= 4 );
 			})
 			.stream();
@@ -127,7 +111,7 @@ describe( 'find', function tests() {
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should find all piped data values satisfying multiple filter criteria for the same datum', function test( done ) {
+	it( 'should find all piped data values satisfying arbitrarily complex filter criteria', function test( done ) {
 		var data, expected, fStream, s;
 
 		// Simulate some data...
@@ -138,11 +122,8 @@ describe( 'find', function tests() {
 
 		// Create a new find stream:
 		fStream = findStream()
-			.filters( 'y1', function ( d ) {
-				return ( d > 3 );
-			})
-			.filters( 'y2', function ( d ) {
-				return ( d < 5 );
+			.filter( function ( d ) {
+				return ( d > 3 ) && ( d < 5 );
 			})
 			.stream();
 
@@ -172,7 +153,7 @@ describe( 'find', function tests() {
 		} // end FUNCTION onRead()
 	});
 
-	it( 'should find all complex piped data values satisfying multiple filter criteria', function test( done ) {
+	it( 'should find all complex piped data values satisfying filter criteria', function test( done ) {
 		var data, expected, fStream, s;
 
 		// Simulate some data...
@@ -221,11 +202,8 @@ describe( 'find', function tests() {
 
 		// Create a new find stream:
 		fStream = findStream()
-			.filters( 'x', function ( d ) {
-				return ( d.x > 1 && d.x < 5 );
-			})
-			.filters( 'y', function ( d ) {
-				return ( d.y > 2 && d.y < 5 );
+			.filter( function ( d ) {
+				return ( d.x > 1 && d.x < 5 ) && ( d.y > 2 && d.y < 5 );
 			})
 			.stream();
 
