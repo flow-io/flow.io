@@ -103,6 +103,7 @@ describe( 'stats/covariance', function tests() {
 		expect( badValue( null ) ).to.throw( Error );
 		expect( badValue( undefined ) ).to.throw( Error );
 		expect( badValue( NaN ) ).to.throw( Error );
+		expect( badValue( function(){} ) ).to.throw( Error );
 
 		function badValue( value ) {
 			return function() {
@@ -120,6 +121,7 @@ describe( 'stats/covariance', function tests() {
 		expect( badValue( null ) ).to.throw( Error );
 		expect( badValue( undefined ) ).to.throw( Error );
 		expect( badValue( NaN ) ).to.throw( Error );
+		expect( badValue( function(){} ) ).to.throw( Error );
 
 		function badValue( value ) {
 			return function() {
@@ -137,6 +139,7 @@ describe( 'stats/covariance', function tests() {
 		expect( badValue( null ) ).to.throw( Error );
 		expect( badValue( undefined ) ).to.throw( Error );
 		expect( badValue( NaN ) ).to.throw( Error );
+		expect( badValue( function(){} ) ).to.throw( Error );
 
 		function badValue( value ) {
 			return function() {
