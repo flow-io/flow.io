@@ -50,6 +50,7 @@
     "flow-quantiles": "~0.0.0",
     "flow-iqr": "~0.0.0",
     "flow-histc": "~0.0.0",
+    "flow-covariance": "~0.0.0",
     "flow-nans": "~0.0.0"
   },
   "devDependencies": {
