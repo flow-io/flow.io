@@ -17,7 +17,7 @@ $ npm install flow.io
 If you are interested in a small subset of streams, see the following modules...
 
 
-### Array
+### Arrays
 
 * 	[flow-array](https://github.com/kgryte/flow-array)
 
