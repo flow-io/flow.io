@@ -38,6 +38,7 @@
     "stream-combiner": "~0.2.0",
     "graceful-fs": "~3.0.2",
     "flow-read": "~0.0.0",
+    "flow-write": "~0.0.0",
     "flow-array": "~0.0.0",
     "flow-map": "~0.0.0",
     "flow-reduce": "~0.0.0",
