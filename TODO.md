@@ -55,7 +55,7 @@ Todos.
 30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
 31. unique (filter?) (value hash; reducer version; emitter version)
 32. downsample (input data: [time,value])
-33. rate (/s)
+33. rate (/s) --> thlorenz; stream-spy?
 34. connectors (tsd,elastic)
 
 
