@@ -62,6 +62,7 @@ If you are interested in a small subset of streams, see the following modules...
 
 ### Filters
 
+*	[flow-find](https://github.com/kgryte/flow-find)
 *	[flow-nans](https://github.com/kgryte/flow-nans)
 
 
