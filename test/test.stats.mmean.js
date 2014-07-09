@@ -47,6 +47,8 @@ describe( 'stats/mean', function tests() {
 		expect( badValue( undefined ) ).to.throw( Error );
 		expect( badValue( NaN ) ).to.throw( Error );
 
+		expect( badValue( false ) ).to.throw( Error );
+
 		function badValue( value ) {
 			return function() {
 				tStream.window( value );
