@@ -60,6 +60,7 @@ Todos.
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3)
+38. flow connectors (tsd, etc.)
 
 
 ### Tests
