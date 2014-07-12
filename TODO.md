@@ -62,6 +62,7 @@ Todos.
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3)
 38. flow connectors (tsd, etc.)
 39. chunkify (numvalues)
+40. unique (hash)
 
 
 ### Tests
