@@ -19,6 +19,7 @@ Todos.
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
 13. move KDE and pdf to separate npmodules
 14. flow-server (workerfy)
+15. separate test utils into separate files and require separately? Worth it? Maybe not.
 
 
 ### Streams
@@ -56,13 +57,18 @@ Todos.
 31. unique (filter?) (value hash; reducer version; emitter version)
 32. downsample (input data: [time,value])
 33. rate (/s) --> thlorenz; stream-spy?
-34. connectors (tsd,elastic)
+34. convert units (thinking of the pretty-bytes module)
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3)
-38. flow connectors (tsd, etc.)
+38. flow connectors (tsd, elastic, etc.)
 39. chunkify (numvalues)
-40. unique (hash)
+40. flow-round/floor/ceil/precision
+41. chunkify-mean, chunkify-median --> a reduce transform upon receiving chunks: [[],[],[],[],...,[[],[]],...,[]],...
+42. geometric mean
+43. harmonic mean
+44. moving gmean
+45. moving hmean
 
 
 ### Tests
