@@ -69,6 +69,10 @@ Todos.
 43. harmonic mean
 44. moving gmean
 45. moving hmean
+46. cumulative sum
+47. diff
+48. pow/log/exp/abs/scalar mult/add
+49. auto-corr (sink)
 
 
 ### Tests
