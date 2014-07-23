@@ -18,7 +18,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kgryte/flow.io.git"
+    "url": "git://github.com/flow-io/flow.io.git"
   },
   "keywords": [
     "streams",
@@ -29,7 +29,7 @@
     "computation"
   ],
   "bugs": {
-    "url": "https://github.com/kgryte/flow.io/issues"
+    "url": "https://github.com/flow-io/flow.io/issues"
   },
   "dependencies": {
     "JSONStream": "~0.7.3",

@@ -73,6 +73,7 @@ Todos.
 47. diff
 48. pow/log/exp/abs/scalar mult/add
 49. auto-corr (sink)
+50. logical (matlab-style)
 
 
 ### Tests
