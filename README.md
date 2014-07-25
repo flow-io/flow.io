@@ -19,51 +19,52 @@ If you are interested in a small subset of streams, see the following modules...
 
 ### Files
 
-*	[flow-read](https://github.com/kgryte/flow-read)
-*	[flow-write](https://github.com/kgryte/flow-write)
+*	[flow-read](https://github.com/flow-io/flow-read)
+*	[flow-write](https://github.com/flow-io/flow-write)
 
 
 ### JSON
 
-*	[flow-parse](https://github.com/kgryte/flow-parse)
-*	[flow-stringify](https://github.com/kgryte/flow-stringify)
+*	[flow-parse](https://github.com/flow-io/flow-parse)
+*	[flow-stringify](https://github.com/flow-io/flow-stringify)
 
 
 ### Arrays
 
-* 	[flow-array](https://github.com/kgryte/flow-array)
+* 	[flow-array](https://github.com/flow-io/flow-array)
 
 
 ### Map
 
-*	[flow-map](https://github.com/kgryte/flow-map)
+*	[flow-map](https://github.com/flow-io/flow-map)
 
 
 ### Reduce
 
-*	[flow-reduce](https://github.com/kgryte/flow-reduce)
+*	[flow-reduce](https://github.com/flow-io/flow-reduce)
 
 
 ### Statistics
 
-*	[flow-count](https://github.com/kgryte/flow-count)
-*	[flow-covariance](https://github.com/kgryte/flow-covariance)
-*	[flow-histc](https://github.com/kgryte/flow-histc)
-*	[flow-iqr](https://github.com/kgryte/flow-iqr)
-*	[flow-max](https://github.com/kgryte/flow-max)
-*	[flow-mean](https://github.com/kgryte/flow-mean)
-*	[flow-median](https://github.com/kgryte/flow-median)
-*	[flow-min](https://github.com/kgryte/flow-min)
-*	[flow-pcc](https://github.com/kgryte/flow-pcc)
-*	[flow-quantiles](https://github.com/kgryte/flow-quantiles)
-*	[flow-sum](https://github.com/kgryte/flow-sum)
-*	[flow-variance](https://github.com/kgryte/flow-variance)
+*	[flow-count](https://github.com/flow-io/flow-count)
+*	[flow-covariance](https://github.com/flow-io/flow-covariance)
+*	[flow-histc](https://github.com/flow-io/flow-histc)
+*	[flow-iqr](https://github.com/flow-io/flow-iqr)
+*	[flow-max](https://github.com/flow-io/flow-max)
+*	[flow-mean](https://github.com/flow-io/flow-mean)
+*	[flow-mmean](https://github.com/flow-io/flow-mmean)
+*	[flow-median](https://github.com/flow-io/flow-median)
+*	[flow-min](https://github.com/flow-io/flow-min)
+*	[flow-pcc](https://github.com/flow-io/flow-pcc)
+*	[flow-quantiles](https://github.com/flow-io/flow-quantiles)
+*	[flow-sum](https://github.com/flow-io/flow-sum)
+*	[flow-variance](https://github.com/flow-io/flow-variance)
 
 
 ### Filters
 
-*	[flow-find](https://github.com/kgryte/flow-find)
-*	[flow-nans](https://github.com/kgryte/flow-nans)
+*	[flow-find](https://github.com/flow-io/flow-find)
+*	[flow-nans](https://github.com/flow-io/flow-nans)
 
 
 
