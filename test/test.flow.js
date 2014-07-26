@@ -60,6 +60,7 @@ describe( 'flow.io', function tests() {
 			'skewness',
 			'sum',
 			'msum',
+			'csum',
 			'variance',
 			'outliers',
 			'mOutliers',

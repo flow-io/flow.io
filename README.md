@@ -59,6 +59,7 @@ If you are interested in a small subset of streams, see the following modules...
 *	[flow-quantiles](https://github.com/flow-io/flow-quantiles)
 *	[flow-sum](https://github.com/flow-io/flow-sum)
 *	[flow-msum](https://github.com/flow-io/flow-msum)
+*	[flow-csum](https://github.com/flow-io/flow-csum)
 *	[flow-variance](https://github.com/flow-io/flow-variance)
 
 
