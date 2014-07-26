@@ -59,6 +59,7 @@ describe( 'flow.io', function tests() {
 			'quantiles',
 			'skewness',
 			'sum',
+			'msum',
 			'variance',
 			'outliers',
 			'mOutliers',

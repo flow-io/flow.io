@@ -41,7 +41,7 @@ Todos.
 15. moving outliers
 16. moving iqr
 17. moving quantile
-18. moving max/min/sum
+18. moving max/min
 19. moving median
 20. moving pcc
 21. pc analysis
@@ -60,7 +60,7 @@ Todos.
 34. convert units (thinking of the pretty-bytes module)
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
-37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3)
+37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
 38. flow connectors (tsd, elastic, etc.)
 39. chunkify (numvalues)
 40. flow-round/floor/ceil/precision
@@ -71,9 +71,12 @@ Todos.
 45. moving hmean
 46. cumulative sum
 47. diff
-48. pow/log/exp/abs/scalar mult/add
+48. pow/log/exp/abs/scalar mult/add div/subtract
 49. auto-corr (sink)
-50. logical (matlab-style)
+50. logical (matlab-style) --> arbitrary filter function
+51. boolean --> 1, truthy; 0, falsy
+52. rate --> [t0,v0],[t1,v1]: (t1-t0)/(v1-v0); next, (t2-t1)/(v2-v1); keep previous data point on hand
+
 
 
 ### Tests

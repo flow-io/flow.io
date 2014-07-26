@@ -58,6 +58,7 @@ If you are interested in a small subset of streams, see the following modules...
 *	[flow-pcc](https://github.com/flow-io/flow-pcc)
 *	[flow-quantiles](https://github.com/flow-io/flow-quantiles)
 *	[flow-sum](https://github.com/flow-io/flow-sum)
+*	[flow-msum](https://github.com/flow-io/flow-msum)
 *	[flow-variance](https://github.com/flow-io/flow-variance)
 
 

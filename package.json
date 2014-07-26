@@ -58,7 +58,8 @@
     "flow-pcc": "~0.0.0",
     "flow-find": "~0.0.0",
     "flow-nans": "~0.0.0",
-    "flow-mmean": "~0.0.0"
+    "flow-mmean": "~0.0.0",
+    "flow-msum": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
