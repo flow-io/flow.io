@@ -18,32 +18,10 @@ To use flow,
 var flow = require( 'flow.io' );
 ```
 
-The _flow_ module includes the following streams...
+The __flow__ module includes the following streams...
 
 
-### flow.read()
-
-This creates a file readStream factory. 
-
-``` javascript
-var rStream = flow.read();
-```
-
-You configure the stream factory by specifying a filepath:
-
-``` javascript
-rStream.path( 'path/to/file' );
-```
-
-Once specified, create a new readStream:
-
-``` javascript
-var stream = rStream.stream( clbk );
-```
-
-Where the `clbk` is invoked upon stream `end` and has an `error` as its first argument. If no read errors, `error` is `null`.
-
-Methods are chainable:
+### [flow.read()](https://github.com/flow-io/flow-read)
 
 ``` javascript
 flow.read()
