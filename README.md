@@ -93,14 +93,39 @@ Transform stream factory to perform a data reduction.
 Reduce stream factory to count the number of streamed data elements and stream the result.
 
 
-#### [flow-covariance()](https://github.com/flow-io/flow-covariance)
+#### [flow-min()](https://github.com/flow-io/flow-min)
 
-Reduce stream factory to calculate the covariance between data elements in a numeric data stream.
+Reduce stream factory to find a numeric data stream's minimum value.
 
 
-#### [flow-histc()](https://github.com/flow-io/flow-histc)
+#### [flow-max()](https://github.com/flow-io/flow-max)
 
-Reduce stream factory to compute a histogram over a numeric data stream.
+Reduce stream factory to find a numeric data stream's maximum value.
+
+
+#### [flow-sum()](https://github.com/flow-io/flow-sum)
+
+Reduce stream factory to calculate a numeric data stream's sum.
+
+
+#### [flow-msum()](https://github.com/flow-io/flow-msum)
+
+Transform stream factory to compute a sliding-window sum over a numeric data stream.
+
+
+#### [flow-csum()](https://github.com/flow-io/flow-csum)
+
+Transform stream factory to compute the cumulative sum over a numeric data stream.
+
+
+#### [flow-median()](https://github.com/flow-io/flow-median)
+
+Reduce stream factory to find a numeric data stream's median value.
+
+
+#### [flow-quantiles()](https://github.com/flow-io/flow-quantiles)
+
+Reduce stream factory to compute quantiles from a numeric data stream.
 
 
 #### [flow-iqr()](https://github.com/flow-io/flow-iqr)
@@ -108,32 +133,47 @@ Reduce stream factory to compute a histogram over a numeric data stream.
 Reduce stream factory to compute the inter-quartile range from a numeric data.
 
 
+#### [flow-histc()](https://github.com/flow-io/flow-histc)
+
+Reduce stream factory to compute a histogram over a numeric data stream.
 
 
----
-## Streams
+#### [flow-mean()](https://github.com/flow-io/flow-mean)
+
+Reduce stream factory to calculate a numeric data stream's mean.
 
 
-### Statistics
+#### [flow-mmean()](https://github.com/flow-io/flow-mmean)
 
-*	[flow-max](https://github.com/flow-io/flow-max)
-*	[flow-mean](https://github.com/flow-io/flow-mean)
-*	[flow-mmean](https://github.com/flow-io/flow-mmean)
-*	[flow-median](https://github.com/flow-io/flow-median)
-*	[flow-min](https://github.com/flow-io/flow-min)
-*	[flow-pcc](https://github.com/flow-io/flow-pcc)
-*	[flow-quantiles](https://github.com/flow-io/flow-quantiles)
-*	[flow-sum](https://github.com/flow-io/flow-sum)
-*	[flow-msum](https://github.com/flow-io/flow-msum)
-*	[flow-csum](https://github.com/flow-io/flow-csum)
-*	[flow-variance](https://github.com/flow-io/flow-variance)
+Transform stream factory to compute a sliding-window average over a numeric data stream.
+
+
+#### [flow-variance()](https://github.com/flow-io/flow-variance)
+
+Reduce stream factory to calculate a numeric data stream's variance.
+
+
+#### [flow-covariance()](https://github.com/flow-io/flow-covariance)
+
+Reduce stream factory to calculate the covariance between data elements in a numeric data stream.
+
+
+#### [flow-pcc()](https://github.com/flow-io/flow-pcc)
+
+Reduce stream factory to compute the Pearson product-moment correlation coefficient between data elements in a numeric data stream.
+
 
 
 ### Filters
 
-*	[flow-find](https://github.com/flow-io/flow-find)
-*	[flow-nans](https://github.com/flow-io/flow-nans)
+#### [flow-find()](https://github.com/flow-io/flow-find)
 
+Filter stream factory which finds stream values matching user-defined critiera.
+
+
+#### [flow-nans()](https://github.com/flow-io/flow-nans)
+
+Filter stream factory which removes any stream values which are not numeric.
 
 
 
