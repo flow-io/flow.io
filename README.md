@@ -18,7 +18,7 @@ To use flow,
 var flow = require( 'flow.io' );
 ```
 
-The flow module is comprised of several smaller modules. If you want to roll your own set of stream factories, follow the links and import the individual modules.
+The flow module is comprised of several smaller modules. If you want to roll your own flow, follow the links and import the individual modules.
 
 
 ## API
@@ -57,26 +57,28 @@ readStream.pipe( stream );
 
 #### [flow-parse()](https://github.com/flow-io/flow-parse)
 
-Transform stream factory to parse JSON.
+Transform stream factory to parse JSON. Wraps JSONStream's [parse](https://github.com/dominictarr/JSONStream) stream.
 
 
 #### [flow-stringify()](https://github.com/flow-io/flow-stringify)
 
-Transform stream factory to stringify JSON.
+Transform stream factory to stringify JSON. Wraps JSONStream's [stringify](https://github.com/dominictarr/JSONStream) stream.
 
 
 ### Arrays
 
 #### [flow-array()](https://github.com/flow-io/flow-array)
 
-Transform stream factory to convert an array into an element-by-element readStream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
+Transform stream factory to convert an array into an element-by-element readStream. Similar to event-stream [readArray](https://github.com/dominictarr/event-stream#readarray-array), except a transform stream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
+
+
 
 
 ### Map
 
 #### [flow-map()](https://github.com/flow-io/flow-map)
 
-Transform stream factory to map a data value to another data value via a transformation function.
+Transform stream factory to map a data value to another data value via a transformation function. Wraps event-stream's [map](https://github.com/dominictarr/event-stream#map-asyncfunction) stream.
 
 
 ### Reduce
