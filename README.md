@@ -29,7 +29,7 @@ The flow module includes the following stream factories...
 
 #### [flow.read()](https://github.com/flow-io/flow-read)
 
-File readStream.
+File readStream factory.
 
 ``` javascript
 var stream = flow.read()
@@ -42,7 +42,7 @@ stream.pipe( process.stdout );
 
 #### [flow.write()](https://github.com/flow-io/flow-write)
 
-File writeStream.
+File writeStream factory.
 
 ``` javascript
 var stream = flow.write()
@@ -57,55 +57,55 @@ readStream.pipe( stream );
 
 #### [flow-parse()](https://github.com/flow-io/flow-parse)
 
-Transform stream to parse JSON.
+Transform stream factory to parse JSON.
 
 
 #### [flow-stringify](https://github.com/flow-io/flow-stringify)
 
-Transform stream to stringify JSON.
+Transform stream factory to stringify JSON.
 
 
 ### Arrays
 
 #### [flow-array](https://github.com/flow-io/flow-array)
 
-Transform stream which converts an array into an element-by-element readStream. Useful when using a sink stream which generates an array and where downstream streams require individual data elements. 
+Transform stream factory to convert an array into an element-by-element readStream. Useful when using a sink stream which generates an array and where downstream streams require individual data elements. 
 
 
 ### Map
 
 #### [flow-map](https://github.com/flow-io/flow-map)
 
-Transform stream which maps a data value to another data value via a transformation function.
+Transform stream factory to map a data value to another data value via a transformation function.
 
 
 ### Reduce
 
 #### [flow-reduce](https://github.com/flow-io/flow-reduce)
 
-Transform stream which performs a data reduction.
+Transform stream factory to perform a data reduction.
 
 
 ### Statistics
 
 #### [flow-count](https://github.com/flow-io/flow-count)
 
-Reduce stream which counts the number of data elements flowing by and streams the result.
+Reduce stream factory to count the number of streamed data elements and stream the result.
 
 
 #### [flow-covariance](https://github.com/flow-io/flow-covariance)
 
-Reduce stream which calculates the covariance between data elements in a numeric data stream.
+Reduce stream factory to calculate the covariance between data elements in a numeric data stream.
 
 
 #### [flow-histc](https://github.com/flow-io/flow-histc)
 
-Reduce stream which computes a histogram over a numeric data stream.
+Reduce stream factory to compute a histogram over a numeric data stream.
 
 
 #### [flow-iqr](https://github.com/flow-io/flow-iqr)
 
-Reduce stream which computes the inter-quartile range from a numeric data.
+Reduce stream factory to compute the inter-quartile range from a numeric data.
 
 
 
