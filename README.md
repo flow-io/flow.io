@@ -10,11 +10,53 @@ Collection of Node.js streams.
 $ npm install flow.io
 ```
 
+## Usage
+
+To use flow,
+
+``` javascript
+var flow = require( 'flow.io' );
+```
+
+The _flow_ module includes the following streams...
+
+
+### flow.read()
+
+This creates a file readStream factory. 
+
+``` javascript
+var rStream = flow.read();
+```
+
+You configure the stream factory by specifying a filepath:
+
+``` javascript
+rStream.path( 'path/to/file' );
+```
+
+Once specified, create a new readStream:
+
+``` javascript
+var stream = rStream.stream( clbk );
+```
+
+Where the `clbk` is invoked upon stream `end` and has an `error` as its first argument. If no read errors, `error` is `null`.
+
+Methods are chainable:
+
+``` javascript
+flow.read()
+	.path( 'path/to/file' )
+	.stream( clbk )
+	.pipe( process.stdout );
+```
+
 
 ---
 ## Streams
 
-If you are interested in a small subset of streams, see the following modules...
+If you are interested in rolling your own set of streams, see the following modules...
 
 
 ### Files

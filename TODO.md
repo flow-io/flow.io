@@ -13,7 +13,7 @@ Todos.
 6. 	individualize
 7. 	serverify
 8. 	use through2 (?)
-9. 	
+9. 	create a flow adventure
 10. pipelines (snap together; nyt)
 11. if process needs stringified values, transformer( stringify )
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
@@ -32,13 +32,13 @@ Todos.
 6. 	MVA should output 2d hist
 7. 	Ability to specify value precision (significant digits)
 8. 	KDE pdfs
-9. 	Threshold occurrence (accumulation threshold)
-10. Threshold count
-11. Threshold binary
-12. Threshold alert
+9. 	Threshold occurrence (accumulation threshold; like cumulative sum)
+10. Threshold count (reduce --> single value output)
+11. Threshold binary (see logical below)
+12. Threshold alert (tranform)
 13. moving threshold occurrence
 14. moving threshold
-15. moving outliers
+15. moving outliers (use online insertion sort with binsearch; this stream will be cpu expensive)
 16. moving iqr
 17. moving quantile
 18. moving max/min
@@ -49,7 +49,7 @@ Todos.
 23. merge independent json streams on a per element basis
 24. find first([num])
 25. find last([num])
-26. sort (sink)
+26. sort (insertion sort and sink)
 27. aggregate (round-robbin?)
 28. random emitter (e.g., random sampling; biased coin flip)
 29. Poisson emitter (Substack's on-the-fly adjust)
