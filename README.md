@@ -59,10 +59,39 @@ readStream.pipe( stream );
 
 Transform stream factory to parse JSON. Wraps JSONStream's [parse](https://github.com/dominictarr/JSONStream) stream.
 
+``` javascript
+var rStream = flow.read()
+	.path( 'path/to/file.json' )
+	.stream();
+
+var pStream = flow.parse().stream();
+
+rStream.pipe( pStream );
+```
+
 
 #### [flow.stringify()](https://github.com/flow-io/flow-stringify)
 
 Transform stream factory to stringify JSON. Wraps JSONStream's [stringify](https://github.com/dominictarr/JSONStream) stream.
+
+``` javascript
+var rStream = flow.read()
+	.path( 'path/to/file.json' )
+	.stream();
+
+var pStream = flow.parse().stream();
+
+var sStream = flow.stringify().stream();
+
+var wStream = flow.write()
+	.path( 'path/to/destination.json' )
+	.stream();
+
+rStream
+	.pipe( pStream )
+	.pipe( sStream )
+	.pipe( wStream );
+```
 
 
 ### Arrays
