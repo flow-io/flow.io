@@ -60,50 +60,50 @@ readStream.pipe( stream );
 Transform stream factory to parse JSON.
 
 
-#### [flow-stringify](https://github.com/flow-io/flow-stringify)
+#### [flow-stringify()](https://github.com/flow-io/flow-stringify)
 
 Transform stream factory to stringify JSON.
 
 
 ### Arrays
 
-#### [flow-array](https://github.com/flow-io/flow-array)
+#### [flow-array()](https://github.com/flow-io/flow-array)
 
-Transform stream factory to convert an array into an element-by-element readStream. Useful when using a sink stream which generates an array and where downstream streams require individual data elements. 
+Transform stream factory to convert an array into an element-by-element readStream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
 
 
 ### Map
 
-#### [flow-map](https://github.com/flow-io/flow-map)
+#### [flow-map()](https://github.com/flow-io/flow-map)
 
 Transform stream factory to map a data value to another data value via a transformation function.
 
 
 ### Reduce
 
-#### [flow-reduce](https://github.com/flow-io/flow-reduce)
+#### [flow-reduce()](https://github.com/flow-io/flow-reduce)
 
 Transform stream factory to perform a data reduction.
 
 
 ### Statistics
 
-#### [flow-count](https://github.com/flow-io/flow-count)
+#### [flow-count()](https://github.com/flow-io/flow-count)
 
 Reduce stream factory to count the number of streamed data elements and stream the result.
 
 
-#### [flow-covariance](https://github.com/flow-io/flow-covariance)
+#### [flow-covariance()](https://github.com/flow-io/flow-covariance)
 
 Reduce stream factory to calculate the covariance between data elements in a numeric data stream.
 
 
-#### [flow-histc](https://github.com/flow-io/flow-histc)
+#### [flow-histc()](https://github.com/flow-io/flow-histc)
 
 Reduce stream factory to compute a histogram over a numeric data stream.
 
 
-#### [flow-iqr](https://github.com/flow-io/flow-iqr)
+#### [flow-iqr()](https://github.com/flow-io/flow-iqr)
 
 Reduce stream factory to compute the inter-quartile range from a numeric data.
 
