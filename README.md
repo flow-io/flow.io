@@ -18,16 +18,28 @@ To use flow,
 var flow = require( 'flow.io' );
 ```
 
-The __flow__ module includes the following streams...
+The flow module includes the following streams...
 
 
 ### [flow.read()](https://github.com/flow-io/flow-read)
 
 ``` javascript
-flow.read()
+var stream = flow.read()
 	.path( 'path/to/file' )
-	.stream( clbk )
-	.pipe( process.stdout );
+	.stream( clbk );
+
+stream.pipe( process.stdout );
+```
+
+
+### [flow.write()](https://github.com/flow-io/flow-write)
+
+``` javascript
+var stream = flow.write()
+	.path( 'path/to/destination' )
+	.stream( clbk );
+
+readStream.pipe( stream );
 ```
 
 
