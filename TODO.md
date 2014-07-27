@@ -69,13 +69,17 @@ Todos.
 43. harmonic mean
 44. moving gmean
 45. moving hmean
-46. 
+46. moving skewness
 47. diff
-48. pow/log/exp/abs/scalar mult/add div/subtract
+48. pow/log/exp/abs mult/div add/subtract
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
 52. rate --> [t0,v0],[t1,v1]: (t1-t0)/(v1-v0); next, (t2-t1)/(v2-v1); keep previous data point on hand
+53. moving kurtosis
+54. moving t-test
+55. moving g-test
+56. moving b-test
 
 
 
