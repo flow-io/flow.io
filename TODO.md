@@ -30,7 +30,7 @@ Todos.
 4. 	Variance overlap parameter
 5. 	Histnd
 6. 	MVA should output 2d hist
-7. 	Ability to specify value precision (significant digits)
+7. 	Ability to specify value precision (significant digits; flow-sigfig)
 8. 	KDE pdfs
 9. 	Threshold occurrence (accumulation threshold; like cumulative sum)
 10. Threshold count (reduce --> single value output)
@@ -46,7 +46,7 @@ Todos.
 20. moving pcc
 21. pc analysis
 22. moving cov
-23. merge independent json streams on a per element basis
+23. merge independent json streams on a per element basis (see zip below)
 24. find first([num])
 25. find last([num])
 26. sort (insertion sort and sink)
@@ -56,14 +56,17 @@ Todos.
 30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
 31. unique (filter?) (value hash; reducer version; emitter version)
 32. downsample (input data: [time,value])
-33. rate (/s) --> thlorenz; stream-spy? --> flow-velocity? flow-throughput? flow-meta-rate?
+33. rate (/s) --> thlorenz; stream-spy? --> flow-velocity? flow-throughput? flow-meta-rate? flow-info-rate? (see flow-info below)
 34. convert units (thinking of the pretty-bytes module)
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
 38. flow connectors (tsd, elastic, etc.)
 39. chunkify (numvalues)
-40. flow-round/floor/ceil/precision
+40. flow-info (meta information; flow-tap? flow-inspect? flow-inspector?)
+	* count
+	* throughput/velocity
+	* last val (val and timestamp)
 41. chunkify-mean, chunkify-median --> a reduce transform upon receiving chunks: [[],[],[],[],...,[[],[]],...,[]],...
 42. geometric mean
 43. harmonic mean
@@ -71,7 +74,19 @@ Todos.
 45. moving hmean
 46. moving skewness
 47. diff
-48. log mult/div add/subtract; log is tricky for negative numbers (requires imaginary numbers)
+48. math:
+	* log; log is tricky for negative numbers (requires imaginary numbers)
+	* mult (factor)
+	* div (divisor)
+	* add (addend/increment)
+	* subtract (subtrahend/decrement)
+	* mod (divisor)
+	* round
+	* floor
+	* ceil
+	* precision
+	* toFixed
+	* trig functions(?)
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
@@ -81,6 +96,11 @@ Todos.
 55. moving g-test
 56. moving b-test
 57. flow fig
+58. eval pdfs over a specified range (min,max) and resolution (num values)
+	* flow-gaussian
+	* flow-exponential
+	* flow-binomial
+	* etc.
 
 
 
