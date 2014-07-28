@@ -156,6 +156,22 @@ readStream
 ```
 
 
+#### [flow.exp()](https://github.com/flow-io/flow-exp)
+
+Transform stream factory to evaluate an exponential function for each numeric data value.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1.453, 0, 9.504, 102.2, 1 ] );
+
+var stream = flow.exp().stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
 
 ### Statistics
 

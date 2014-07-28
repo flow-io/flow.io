@@ -71,7 +71,7 @@ Todos.
 45. moving hmean
 46. moving skewness
 47. diff
-48. log/exp mult/div add/subtract
+48. log mult/div add/subtract; log is tricky for negative numbers (requires imaginary numbers)
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
@@ -80,6 +80,7 @@ Todos.
 54. moving t-test
 55. moving g-test
 56. moving b-test
+57. flow fig
 
 
 
