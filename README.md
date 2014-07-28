@@ -98,7 +98,7 @@ rStream
 
 #### [flow.array()](https://github.com/flow-io/flow-array)
 
-Transform stream factory to convert an array into an element-by-element readStream. Similar to event-stream [readArray](https://github.com/dominictarr/event-stream#readarray-array), except a transform stream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
+Transform stream factory to convert an array into an element-by-element readable stream. Similar to event-stream [readArray](https://github.com/dominictarr/event-stream#readarray-array), except a transform stream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
 
 
 
@@ -115,6 +115,29 @@ Transform stream factory to map a data value to another data value via a transfo
 #### [flow.reduce()](https://github.com/flow-io/flow-reduce)
 
 Transform stream factory to perform a data reduction.
+
+
+
+### Mathematics
+
+#### [flow.abs()](https://github.com/flow-io/flow-abs)
+
+Transform stream factory to map numeric data stream values to their absolute values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ -1, -1, 0, 1, 1 ] );
+
+var stream = flow.abs()
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
 
 
 ### Statistics
