@@ -129,8 +129,7 @@ var readArray = require( 'event-stream' ).readArray;
 
 var readStream = readArray( [ -1, -1, 0, 1, 1 ] );
 
-var stream = flow.abs()
-	.stream();
+var stream = flow.abs().stream();
 
 readStream
 	.pipe( stream )
