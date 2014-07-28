@@ -43,6 +43,7 @@ describe( 'flow.io', function tests() {
 			'map',
 			'reduce',
 			'abs',
+			'pow',
 			'count',
 			'covariance',
 			'histc',

@@ -137,6 +137,24 @@ readStream
 ```
 
 
+#### [flow.pow()](https://github.com/flow-io/flow-pow)
+
+Transform stream factory to exponentiate numeric data stream values according to a specified power.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 2, 4, 3, 5, 7 ] );
+
+var stream = flow.pow().
+	.exponent( 3 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
 
 
 ### Statistics

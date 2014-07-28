@@ -61,7 +61,8 @@
     "flow-mmean": "~0.0.0",
     "flow-msum": "~0.0.0",
     "flow-csum": "~0.0.0",
-    "flow-abs": "~0.0.0"
+    "flow-abs": "~0.0.0",
+    "flow-pow": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",

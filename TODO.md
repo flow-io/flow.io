@@ -71,7 +71,7 @@ Todos.
 45. moving hmean
 46. moving skewness
 47. diff
-48. pow/log/exp mult/div add/subtract
+48. log/exp mult/div add/subtract
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
