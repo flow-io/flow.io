@@ -146,7 +146,7 @@ var readArray = require( 'event-stream' ).readArray;
 
 var readStream = readArray( [ 2, 4, 3, 5, 7 ] );
 
-var stream = flow.pow().
+var stream = flow.pow()
 	.exponent( 3 )
 	.stream();
 
