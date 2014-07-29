@@ -209,6 +209,25 @@ readStream
 Reduce stream factory to find a numeric data stream's maximum value.
 
 
+#### [flow.mmax()](https://github.com/flow-io/flow-mmax)
+
+Transform stream factory to find sliding-window maximum values (moving max) over a numeric data stream.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [1,0,5,2,3,6,8,1,0] );
+
+var stream = flow.mmax()
+	.window( 3 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream*/ );
+```
+
+
 #### [flow.sum()](https://github.com/flow-io/flow-sum)
 
 Reduce stream factory to calculate a numeric data stream's sum.

@@ -41,7 +41,7 @@ Todos.
 15. moving outliers (use online insertion sort with binsearch; this stream will be cpu expensive)
 16. moving iqr
 17. moving quantile
-18. moving max
+18. 
 19. moving median
 20. moving pcc
 21. pc analysis

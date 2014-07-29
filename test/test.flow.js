@@ -52,6 +52,7 @@ describe( 'flow.io', function tests() {
 			'kde',
 			'kurtosis',
 			'max',
+			'mmax',
 			'mean',
 			'median',
 			'min',
