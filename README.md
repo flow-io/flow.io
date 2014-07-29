@@ -185,6 +185,25 @@ Reduce stream factory to count the number of streamed data elements and stream t
 Reduce stream factory to find a numeric data stream's minimum value.
 
 
+#### [flow.mmin()](https://github.com/flow-io/flow-mmin)
+
+Transform stream factory to find sliding-window minimum values (moving min) over a numeric data stream.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [1,0,5,2,3,6,8,1,0] );
+
+var stream = flow.mmin()
+	.window( 3 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream*/ );
+```
+
+
 #### [flow.max()](https://github.com/flow-io/flow-max)
 
 Reduce stream factory to find a numeric data stream's maximum value.

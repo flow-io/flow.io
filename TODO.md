@@ -41,7 +41,7 @@ Todos.
 15. moving outliers (use online insertion sort with binsearch; this stream will be cpu expensive)
 16. moving iqr
 17. moving quantile
-18. moving max/min
+18. moving max
 19. moving median
 20. moving pcc
 21. pc analysis
@@ -50,7 +50,7 @@ Todos.
 24. find first([num])
 25. find last([num])
 26. sort (insertion sort and sink)
-27. aggregate (round-robbin?)
+27. aggregate (round-robbin? if value-by-value); also aggregate by chunk (e.g., streamed arrays of, say, 300 elements, which are aggregated element-wise)
 28. random emitter (e.g., random sampling; biased coin flip)
 29. Poisson emitter (Substack's on-the-fly adjust)
 30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
@@ -61,7 +61,7 @@ Todos.
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
-38. flow connectors (tsd, elastic, etc.)
+38. flow connectors (tsd, elastic, etc.; flow-from-opentsdb, flow-from-elasticsearch)
 39. chunkify (numvalues)
 40. flow-info (meta information; flow-tap? flow-inspect? flow-inspector?)
 	* count

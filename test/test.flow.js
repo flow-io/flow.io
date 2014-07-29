@@ -55,6 +55,7 @@ describe( 'flow.io', function tests() {
 			'mean',
 			'median',
 			'min',
+			'mmin',
 			'mmean',
 			'mva',
 			'mvariance',
