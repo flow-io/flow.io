@@ -29,7 +29,7 @@ Todos.
 3. 	Mean overlap parameter
 4. 	Variance overlap parameter
 5. 	Histnd
-6. 	MVA should output 2d hist
+6. 	MVA should output 2d hist (or no, just stream to histnd; in which case, call flow-mean-variance)
 7. 	Ability to specify value precision (significant digits; flow-sigfig)
 8. 	KDE pdfs
 9. 	Threshold occurrence (accumulation threshold; like cumulative sum)
@@ -41,7 +41,7 @@ Todos.
 15. moving outliers (use online insertion sort with binsearch; this stream will be cpu expensive)
 16. moving iqr
 17. moving quantile
-18. 
+18. file loopback (infinite read; configurable start, pause, end)
 19. moving median
 20. moving pcc
 21. pc analysis
@@ -101,6 +101,8 @@ Todos.
 	* flow-exponential
 	* flow-binomial
 	* etc.
+59. binarysearch (initialize with array of values; find index of array value matching streamed value)
+60. binsearch (see hist)
 
 
 

@@ -66,7 +66,9 @@ var rStream = flow.read()
 
 var pStream = flow.parse().stream();
 
-rStream.pipe( pStream );
+rStream
+	.pipe( pStream )
+	.pipe( /* writable stream*/ );
 ```
 
 
