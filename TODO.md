@@ -100,6 +100,8 @@ Todos.
 	* flow-gaussian
 	* flow-exponential
 	* flow-binomial
+	* flow-beta
+	* flow-gamma
 	* etc.
 59. binarysearch (initialize with array of values; find index of array value matching streamed value)
 60. binsearch (see hist)
