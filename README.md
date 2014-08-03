@@ -148,7 +148,7 @@ var readArray = require( 'event-stream' ).readArray;
 var readStream = readArray( [ 12, 8, 34, 512, 72 ] );
 
 var stream = flow.multiply()
-	.factor( 10 )
+	.scalar( 10 )
 	.stream();
 
 readStream
