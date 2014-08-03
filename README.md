@@ -138,6 +138,24 @@ readStream
 	.pipe( /* writable stream */ );
 ```
 
+#### [flow-multiply()](https://github.com/flow-io/flow-multiply)
+
+Transform stream factory to perform scalar multiplication on streamed numeric data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 12, 8, 34, 512, 72 ] );
+
+var stream = flow.multiply()
+	.factor( 10 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
 
 #### [flow.pow()](https://github.com/flow-io/flow-pow)
 

@@ -65,7 +65,8 @@
     "flow-pow": "~0.0.0",
     "flow-exp": "~0.0.0",
     "flow-mmin": "~0.0.0",
-    "flow-mmax": "~0.0.0"
+    "flow-mmax": "~0.0.0",
+    "flow-multiply": "~0.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
