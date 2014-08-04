@@ -44,6 +44,7 @@ describe( 'flow.io', function tests() {
 			'reduce',
 			'abs',
 			'multiply',
+			'divide',
 			'pow',
 			'exp',
 			'count',
