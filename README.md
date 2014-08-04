@@ -138,7 +138,7 @@ readStream
 	.pipe( /* writable stream */ );
 ```
 
-#### [flow-multiply()](https://github.com/flow-io/flow-multiply)
+#### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
 Transform stream factory to perform scalar multiplication on streamed numeric data values.
 
@@ -156,7 +156,7 @@ readStream
 	.pipe( /* writable stream */ );
 ```
 
-#### [flow-divide()](https://github.com/flow-io/flow-divide)
+#### [flow.divide()](https://github.com/flow-io/flow-divide)
 
 Transform stream factory to perform scalar division on streamed numeric data values.
 
