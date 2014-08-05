@@ -138,6 +138,22 @@ readStream
 	.pipe( /* writable stream */ );
 ```
 
+#### [flow.round()](https://github.com/flow-io/flow-round)
+
+Transform stream factory to round numeric data stream values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 3.245, -0.9845, -20.446, 0.5, 1.0, 10 ] );
+
+var stream = flow.round().stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
 #### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
 Transform stream factory to perform scalar multiplication on streamed numeric data values.

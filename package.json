@@ -62,6 +62,7 @@
     "flow-msum": "~0.0.0",
     "flow-csum": "~0.0.0",
     "flow-abs": "~0.0.0",
+    "flow-round": "~0.0.0",
     "flow-pow": "~0.0.0",
     "flow-exp": "~0.0.0",
     "flow-mmin": "~0.0.0",
