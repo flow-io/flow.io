@@ -79,7 +79,6 @@ Todos.
 	* add (addend/increment)
 	* subtract (subtrahend/decrement)
 	* mod (divisor)
-	* floor
 	* ceil
 	* precision
 	* toFixed

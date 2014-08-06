@@ -154,6 +154,26 @@ readStream
 	.pipe( /* writable stream */ );
 ```
 
+
+
+#### [flow.floor()](https://github.com/flow-io/flow-floor)
+
+Transform stream factory to floor numeric data stream values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 3.245, -0.9845, -20.446, 0.5, 1.0, 10, 5.9999 ] );
+
+var stream = flow.floor().stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
+
 #### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
 Transform stream factory to perform scalar multiplication on streamed numeric data values.
