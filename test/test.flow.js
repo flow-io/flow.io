@@ -45,6 +45,7 @@ describe( 'flow.io', function tests() {
 			'abs',
 			'round',
 			'floor',
+			'ceil',
 			'multiply',
 			'divide',
 			'pow',

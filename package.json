@@ -64,6 +64,7 @@
     "flow-abs": "~0.0.0",
     "flow-round": "~0.0.0",
     "flow-floor": "~0.0.0",
+    "flow-ceil": "~0.0.0",
     "flow-pow": "~0.0.0",
     "flow-exp": "~0.0.0",
     "flow-mmin": "~0.0.0",

@@ -174,6 +174,24 @@ readStream
 
 
 
+#### [flow.ceil()](https://github.com/flow-io/flow-ceil)
+
+Transform stream factory to round numeric data stream values toward positive infinity.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 3.245, -0.9845, -20.446, 0.5, 1.0, 10, 5.9999 ] );
+
+var stream = flow.ceil().stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
+
 #### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
 Transform stream factory to perform scalar multiplication on streamed numeric data values.

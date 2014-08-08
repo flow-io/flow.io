@@ -29,13 +29,13 @@ Todos.
 3. 	Mean overlap parameter
 4. 	Variance overlap parameter
 5. 	Histnd
-6. 	MVA should output 2d hist (or no, just stream to histnd; in which case, call flow-mean-variance)
+6. 	MVA should output 2d hist (or no, just stream to histnd; in which case, call flow-mean-variance; or yes, mva, but make a stream pipeline: mean-variance pipe histnd)
 7. 	Ability to specify value precision (significant digits; flow-sigfig)
 8. 	KDE pdfs
 9. 	Threshold occurrence (accumulation threshold; like cumulative sum)
 10. Threshold count (reduce --> single value output)
 11. Threshold binary (see logical below)
-12. Threshold alert (tranform)
+12. Threshold alert (transform)
 13. moving threshold occurrence
 14. moving threshold
 15. moving outliers (use online insertion sort with binsearch; this stream will be cpu expensive)
@@ -47,27 +47,27 @@ Todos.
 21. pc analysis
 22. moving cov
 23. merge independent json streams on a per element basis (see zip below)
-24. find first([num])
+24. find first([num]) --> could make this and #25 part of find; optional parameters: 'first|last', [number]
 25. find last([num])
 26. sort (insertion sort and sink)
 27. aggregate (round-robbin? if value-by-value); also aggregate by chunk (e.g., streamed arrays of, say, 300 elements, which are aggregated element-wise)
 28. random emitter (e.g., random sampling; biased coin flip)
 29. Poisson emitter (Substack's on-the-fly adjust)
-30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe )
-31. unique (filter?) (value hash; reducer version; emitter version)
+30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe ) --> could also emit on an interval; use setTimeout and have start, pause, stop logic.
+31. unique (filter?) (value hash; reducer version; emitter version) --> will need a max num values parameter; once limit reached, cull oldest values (see Issacs)
 32. downsample (input data: [time,value])
 33. rate (/s) --> thlorenz; stream-spy? --> flow-velocity? flow-throughput? flow-meta-rate? flow-info-rate? (see flow-info below)
-34. convert units (thinking of the pretty-bytes module)
+34. convert units (thinking of the pretty-bytes module) --> params: input units, output units; e.g., 'm', 'km'; SI and gringo units --> create separate module containing units dictionary (convert-units; unit-converter; units; units.io)
 35. simplify find (only 1 filter function needed)
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
-38. flow connectors (tsd, elastic, etc.; flow-from-opentsdb, flow-from-elasticsearch)
+38. flow connectors (tsd, elastic, etc.; flow-from-opentsdb, flow-from-elasticsearch) --> wrapper for opentsdb.js
 39. chunkify (numvalues)
 40. flow-info (meta information; flow-tap? flow-inspect? flow-inspector?)
 	* count
 	* throughput/velocity
 	* last val (val and timestamp)
-41. chunkify-mean, chunkify-median --> a reduce transform upon receiving chunks: [[],[],[],[],...,[[],[]],...,[]],...
+41. chunkify-mean (cmean?), chunkify-median (cmedian?) --> a reduce transform upon receiving chunks: [[],[],[],[],...,[[],[]],...,[]],...
 42. geometric mean
 43. harmonic mean
 44. moving gmean
@@ -76,10 +76,9 @@ Todos.
 47. diff
 48. math:
 	* log; log is tricky for negative numbers (requires imaginary numbers)
-	* add (addend/increment)
-	* subtract (subtrahend/decrement)
+	* add (addend/increment/add)
+	* subtract (subtrahend/decrement/subtract)
 	* mod (divisor)
-	* ceil
 	* precision
 	* toFixed
 	* trig functions(?)
@@ -101,6 +100,8 @@ Todos.
 	* etc.
 59. binarysearch (initialize with array of values; find index of array value matching streamed value)
 60. binsearch (see hist)
+61. moving normality test
+
 
 
 
