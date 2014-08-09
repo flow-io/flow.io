@@ -42,6 +42,7 @@ describe( 'flow.io', function tests() {
 			'array',
 			'map',
 			'reduce',
+			'chunkify',
 			'abs',
 			'round',
 			'floor',

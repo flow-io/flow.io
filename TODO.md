@@ -24,8 +24,8 @@ Todos.
 
 ### Streams
 
-1. 	Moving weighted mean (exp)
-2. 	Moving weighted variance
+1. 	Moving weighted mean (exp; wmean)
+2. 	Moving weighted variance (wvar)
 3. 	Mean overlap parameter
 4. 	Variance overlap parameter
 5. 	Histnd
@@ -54,7 +54,7 @@ Todos.
 28. random emitter (e.g., random sampling; biased coin flip)
 29. Poisson emitter (Substack's on-the-fly adjust)
 30. Markov generator (setup with initial config (pi, T, length [could be infinite] ) and then pipe ) --> could also emit on an interval; use setTimeout and have start, pause, stop logic.
-31. unique (filter?) (value hash; reducer version; emitter version) --> will need a max num values parameter; once limit reached, cull oldest values (see Issacs)
+31. unique (filter?) (value hash [value: time]; reducer version; emitter version) --> will need a max num values parameter; once limit reached, cull oldest values (see Issacs)
 32. downsample (input data: [time,value])
 33. rate (/s) --> thlorenz; stream-spy? --> flow-velocity? flow-throughput? flow-meta-rate? flow-info-rate? (see flow-info below)
 34. convert units (thinking of the pretty-bytes module) --> params: input units, output units; e.g., 'm', 'km'; SI and gringo units --> create separate module containing units dictionary (convert-units; unit-converter; units; units.io)
@@ -62,14 +62,14 @@ Todos.
 36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
 38. flow connectors (tsd, elastic, etc.; flow-from-opentsdb, flow-from-elasticsearch) --> wrapper for opentsdb.js
-39. chunkify (numvalues)
+39. 
 40. flow-info (meta information; flow-tap? flow-inspect? flow-inspector?)
 	* count
 	* throughput/velocity
 	* last val (val and timestamp)
 41. chunkify-mean (cmean?), chunkify-median (cmedian?) --> a reduce transform upon receiving chunks: [[],[],[],[],...,[[],[]],...,[]],...
-42. geometric mean
-43. harmonic mean
+42. geometric mean (gmean)
+43. harmonic mean (hmean)
 44. moving gmean
 45. moving hmean
 46. moving skewness

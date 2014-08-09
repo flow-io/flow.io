@@ -102,7 +102,23 @@ rStream
 
 Transform stream factory to convert an array into an element-by-element readable stream. Similar to event-stream [readArray](https://github.com/dominictarr/event-stream#readarray-array), except a transform stream. Useful when using a sink stream which generates an array and where downstream streams in a stream pipeline require individual data elements. 
 
+#### [flow.chunkify()](https://github.com/flow-io/flow-chunkify)
 
+Transform stream factory to chunk streamed data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1, 1, 1, 2, 2, 2, 3, 3, 3 ] );
+
+var stream = flow.chunkify()
+	.numValues( 3 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
 
 
 ### Map
