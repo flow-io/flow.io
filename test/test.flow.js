@@ -47,6 +47,7 @@ describe( 'flow.io', function tests() {
 			'floor',
 			'ceil',
 			'add',
+			'subtract',
 			'multiply',
 			'divide',
 			'pow',

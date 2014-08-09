@@ -70,6 +70,7 @@
     "flow-mmin": "~0.0.0",
     "flow-mmax": "~0.0.0",
     "flow-add": "~0.0.0",
+    "flow-subtract": "~0.0.0",
     "flow-multiply": "^1.0.0",
     "flow-divide": "0.0.0"
   },

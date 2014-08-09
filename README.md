@@ -210,6 +210,25 @@ readStream
 ```
 
 
+#### [flow.subtract()](https://github.com/flow-io/flow-subtract)
+
+Transform stream factory to decrement streamed numeric data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1, 0, 1, 1, 0 ] );
+
+var stream = flow.subtract()
+	.subtract( 1 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
 
 #### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
