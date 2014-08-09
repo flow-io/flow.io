@@ -121,6 +121,25 @@ readStream
 ```
 
 
+#### [flow.sinkandstream()](https://github.com/flow-io/flow-sink-and-stream)
+
+Transform stream factory to sink a specified number of streamed data values and then stream new data values as they arrive. 
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1, 1, 1, 2, 3, 4, 5 ] );
+
+var stream = flow.sinkandstream()
+	.numValues( 3 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
 ### Map
 
 #### [flow.map()](https://github.com/flow-io/flow-map)

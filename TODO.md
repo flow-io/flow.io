@@ -59,7 +59,7 @@ Todos.
 33. rate (/s) --> thlorenz; stream-spy? --> flow-velocity? flow-throughput? flow-meta-rate? flow-info-rate? (see flow-info below)
 34. convert units (thinking of the pretty-bytes module) --> params: input units, output units; e.g., 'm', 'km'; SI and gringo units --> create separate module containing units dictionary (convert-units; unit-converter; units; units.io)
 35. simplify find (only 1 filter function needed)
-36. sink and then readArray (e.g., wait for 300 values and then stream 301 to end as individual values) --> sink-n-stream
+36. 
 37. unzip and zip; (e.g., array of 3; create 3 separate streams; transforms; merge back to array of 3) --> fan and unfan?
 38. flow connectors (tsd, elastic, etc.; flow-from-opentsdb, flow-from-elasticsearch) --> wrapper for opentsdb.js
 39. 
