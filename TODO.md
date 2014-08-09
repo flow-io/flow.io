@@ -76,7 +76,6 @@ Todos.
 47. diff
 48. math:
 	* log; log is tricky for negative numbers (requires imaginary numbers)
-	* add (addend/increment/add)
 	* subtract (subtrahend/decrement/subtract)
 	* mod (divisor)
 	* precision

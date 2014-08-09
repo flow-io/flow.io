@@ -191,6 +191,25 @@ readStream
 ```
 
 
+#### [flow.add()](https://github.com/flow-io/flow-add)
+
+Transform stream factory to increment streamed numeric data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1, 0, 1, 1, 0 ] );
+
+var stream = flow.add()
+	.add( 100 )
+	.stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
 
 #### [flow.multiply()](https://github.com/flow-io/flow-multiply)
 
