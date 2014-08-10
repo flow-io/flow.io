@@ -63,6 +63,7 @@ describe( 'flow.io', function tests() {
 			'max',
 			'mmax',
 			'mean',
+			'cmean',
 			'median',
 			'min',
 			'mmin',

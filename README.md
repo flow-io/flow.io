@@ -438,6 +438,29 @@ Reduce stream factory to calculate a numeric data stream's mean.
 Transform stream factory to compute a sliding-window average over a numeric data stream.
 
 
+#### [flow.cmean()](https://github.com/flow-io/flow-cmean)
+
+Transform stream factory to calculate arithmetic means for streamed data arrays (chunks).
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 1, 2, 1, 2, 2, 1, 4, 3, 5.5 ] );
+
+var cStream = flow.chunkify()
+	.numValues( 3 )
+	.stream();
+
+var mStream = flow.cmean()
+	.stream();
+
+readStream
+	.pipe( cStream )
+	.pipe( mStream )
+	.pipe( /* writable stream */ );
+```
+
+
 #### [flow.variance()](https://github.com/flow-io/flow-variance)
 
 Reduce stream factory to calculate a numeric data stream's variance.
