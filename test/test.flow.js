@@ -54,6 +54,7 @@ describe( 'flow.io', function tests() {
 			'divide',
 			'pow',
 			'exp',
+			'diff',
 			'count',
 			'covariance',
 			'histc',

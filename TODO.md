@@ -20,6 +20,7 @@ Todos.
 13. move KDE and pdf to separate npmodules
 14. flow-server (workerfy)
 15. separate test utils into separate files and require separately? Worth it? Maybe not. --> Yes. flow-mock-through-write, flow-mock-through-read, etc.
+16. all simulators should have start, pause, stop logic and an interval parameter
 
 
 ### Streams
@@ -73,7 +74,7 @@ Todos.
 44. moving gmean
 45. moving hmean
 46. moving skewness
-47. diff
+47. 
 48. math:
 	* log; log is tricky for negative numbers (requires imaginary numbers)
 	* mod (divisor)
@@ -99,7 +100,7 @@ Todos.
 59. binarysearch (initialize with array of values; find index of array value matching streamed value)
 60. binsearch (see hist)
 61. moving normality test
-62. all simulators should have start, pause, stop logic and an interval parameter
+62. 
 
 
 

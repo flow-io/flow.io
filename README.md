@@ -338,6 +338,23 @@ readStream
 ```
 
 
+#### [flow.diff()](https://github.com/flow-io/flow-diff)
+
+Transform stream factory to calculate the difference between successive streamed data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 10, 8, 22, 100, 1 ] );
+
+var stream = flow.diff().stream();
+
+readStream
+	.pipe( stream )
+	.pipe( /* writable stream */ );
+```
+
+
 ### Statistics
 
 #### [flow.count()](https://github.com/flow-io/flow-count)
