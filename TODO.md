@@ -74,7 +74,19 @@ Todos.
 44. moving gmean
 45. moving hmean
 46. moving skewness
-47. 
+47. validation --> allow pass through for valid data; allow user-defined behavior when validation not met (e.g., kill stream, emit error message, pipe invalid data to separate stream (fork stream), etc)
+	* object
+		+ properties
+		+ prop value validation
+	* array
+		+ length
+		+ content-type
+		+ ndarray (typed arrays)
+	* boolean
+	* numeric
+	* string
+	* date/time
+	* arbitrary (filter)
 48. math:
 	* log; log is tricky for negative numbers (requires imaginary numbers)
 	* mod (divisor)
@@ -84,7 +96,7 @@ Todos.
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
-52. rate --> [t0,v0],[t1,v1]: (t1-t0)/(v1-v0); next, (t2-t1)/(v2-v1); keep previous data point on hand
+52. rate --> [t0,v0],[t1,v1]: (v1-v0)/(t1-t0); next, (v2-v1)/(t2-t1); keep previous data point on hand
 53. moving kurtosis
 54. moving t-test
 55. moving g-test
