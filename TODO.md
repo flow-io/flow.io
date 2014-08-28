@@ -112,7 +112,15 @@ Todos.
 59. binarysearch (initialize with array of values; find index of array value matching streamed value)
 60. binsearch (see hist)
 61. moving normality test
-62. 
+62. birch
+63. sliding dft
+64. bloom filter
+65. moving frequency --> moving window; count item frequency; emit array.
+66. chunked frequency
+67. frequency --> reduce stream; hash with count
+68. replay --> stream data to transform stream; as data streams, simply pass through while also writing data to file (cache; newline delimited text); once data source ends, replay the data continuously (node-byline); pause, stop (clear cache), start.
+69. coefficient of variation
+70. throttle (emit data on time interval; e.g., every 10 secs; alternatively, only emit event when no other data is received for some time interval following first data)
 
 
 
