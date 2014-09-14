@@ -6,9 +6,9 @@ Todos.
 ### General
 
 1. 	Tests
-2. 	Makefile
+2. 	Makefile (all modules)
 3. 	Examples
-4. 	Travis.yml
+4. 	Travis.yml (all modules)
 5. 	npm publish
 6. 	individualize
 7. 	serverify
@@ -19,7 +19,7 @@ Todos.
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
 13. move KDE and pdf to separate npmodules
 14. flow-server (workerfy)
-15. separate test utils into separate files and require separately? Worth it? Maybe not. --> Yes. flow-mock-through-write, flow-mock-through-read, etc.
+15. 
 16. all simulators should have start, pause, stop logic and an interval parameter
 
 
@@ -145,7 +145,7 @@ Todos.
 16. Stats.mvariance
 17. 
 18. 
-19. Stats.skewness
+19. 
 20. 
 21. 
 22. Threshold

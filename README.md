@@ -1,7 +1,8 @@
 Flow.io
-==========
+=======
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-Collection of Node.js streams.
+> Collection of Node.js streams.
 
 
 ## Installation
@@ -19,9 +20,6 @@ var flow = require( 'flow.io' );
 ```
 
 The flow module is comprised of several smaller modules. If you want to roll your own flow, follow the links and import the individual modules.
-
-
-## API
 
 The flow module includes the following stream factories...
 
@@ -493,6 +491,23 @@ Reduce stream factory to calculate the covariance between data elements in a num
 Reduce stream factory to compute the Pearson product-moment correlation coefficient between data elements in a numeric data stream.
 
 
+#### [flow.skewness()](https://github.com/flow-io/flow-skewness)
+
+Transform stream factory to calculate the skewness of streamed data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 82, 34, 45, 56, 56, 71 ] );
+
+var sStream = flow.skewness().stream();
+
+readStream
+	.pipe( sStream )
+	.pipe( /* writable stream */ );
+```
+
+
 
 ### Filters
 
@@ -510,15 +525,30 @@ Filter stream factory which removes any stream values which are not numeric.
 ---
 ## Tests
 
-Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions.
+### Unit
 
-Assuming you have installed Mocha, execute the following command in the top-level application directory to run the tests:
+Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
-$ mocha
+$ make test
 ```
 
 All new feature development should have corresponding unit tests to validate correct functionality.
+
+
+### Test Coverage
+
+This repository uses [Istanbul](https://github.com/gotwarlost/istanbul) as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
+
+``` bash
+$ make test-cov
+```
+
+Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
+
+``` bash
+$ open reports/coverage/lcov-report/index.html
+```
 
 
 ---
@@ -531,3 +561,22 @@ All new feature development should have corresponding unit tests to validate cor
 ## Copyright
 
 Copyright &copy; 2014. Athan Reines.
+
+
+[npm-image]: http://img.shields.io/npm/v/flow.io.svg
+[npm-url]: https://npmjs.org/package/flow.io
+
+[travis-image]: http://img.shields.io/travis/flow-io/flow.io/master.svg
+[travis-url]: https://travis-ci.org/flow-io/flow.io
+
+[coveralls-image]: https://img.shields.io/coveralls/flow-io/flow.io/master.svg
+[coveralls-url]: https://coveralls.io/r/flow-io/flow.io?branch=master
+
+[dependencies-image]: http://img.shields.io/david/flow-io/flow.io.svg
+[dependencies-url]: https://david-dm.org/flow-io/flow.io
+
+[dev-dependencies-image]: http://img.shields.io/david/dev/flow-io/flow.io.svg
+[dev-dependencies-url]: https://david-dm.org/dev/flow-io/flow.io
+
+[github-issues-image]: http://img.shields.io/github/issues/flow-io/flow.io.svg
+[github-issues-url]: https://github.com/flow-io/flow.io/issues

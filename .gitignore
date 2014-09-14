@@ -1,7 +1,8 @@
 
 # Directories #
 ###############
-
+reports/
+build/
 
 # Compiled source #
 ###################
