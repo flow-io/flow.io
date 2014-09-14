@@ -19,9 +19,9 @@ To use flow,
 var flow = require( 'flow.io' );
 ```
 
-The flow module is comprised of several smaller modules. If you want to roll your own flow, follow the links and import the individual modules.
+The flow library is comprised of several smaller modules. If you want to roll your own flow, follow the links and import the individual modules.
 
-The flow module includes the following stream factories...
+The flow library includes the following stream factories...
 
 ### Files
 
@@ -493,7 +493,7 @@ Reduce stream factory to compute the Pearson product-moment correlation coeffici
 
 #### [flow.skewness()](https://github.com/flow-io/flow-skewness)
 
-Transform stream factory to calculate the skewness of streamed data values.
+Reduce stream factory to calculate the skewness of streamed data values.
 
 ``` javascript
 var readArray = require( 'event-stream' ).readArray;
