@@ -60,6 +60,8 @@
     "flow-mmax": "~0.0.0",
     "flow-mmean": "~0.0.0",
     "flow-mmin": "~0.0.0",
+    "flow-mock-read": "^1.0.0",
+    "flow-mock-write": "^1.0.0",
     "flow-msum": "~0.0.0",
     "flow-multiply": "^1.0.0",
     "flow-nans": "~0.0.0",

@@ -19,7 +19,7 @@ Todos.
 12. what should happen when the window size exceeds the piped data length? (mean, var, mva, etc) 
 13. move KDE and pdf to separate npmodules
 14. flow-server (workerfy)
-15. 
+15. browserify build (leave out file streams)
 16. all simulators should have start, pause, stop logic and an interval parameter
 
 

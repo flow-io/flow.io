@@ -513,7 +513,7 @@ readStream
 
 #### [flow.find()](https://github.com/flow-io/flow-find)
 
-Filter stream factory which finds stream values matching user-defined critiera.
+Filter stream factory which finds stream values matching user-defined criteria.
 
 
 #### [flow.nans()](https://github.com/flow-io/flow-nans)
@@ -522,7 +522,63 @@ Filter stream factory which removes any stream values which are not numeric.
 
 
 
+### Mock
 
+#### [flow.mockWrite()](https://github.com/flow-io/flow-mock-write)
+
+Provides a mock source for writable streams.
+
+Note: implemented as a [classic stream](classic stream).
+
+``` javascript
+var eventStream = require( 'event-stream' );
+
+// Simulate some data:
+var data = new Array( 100 );
+
+for ( var i = 0; i < data.length; i++ ) {
+    data[ i ] = Math.random()*100;
+}
+
+// Create a writable stream:
+var writable = eventStream.map( function( d, clbk ){
+        clbk( null, d.toString()+'\n' );
+    });
+
+// Pipe to standard out:
+writable.pipe( process.stdout );
+
+// Start streaming...
+mock( data, writable );
+```
+
+
+#### [flow.mockRead()](https://github.com/flow-io/flow-mock-read)
+
+Provides a mock stream sink for readable streams.
+
+Note: implemented as a [classic stream](classic stream).
+
+``` javascript
+var eventStream = require( 'event-stream' );
+
+// Simulate some data:
+var data = new Array( 100 );
+
+for ( var i = 0; i < data.length; i++ ) {
+    data[ i ] = Math.random()*100;
+}
+
+// Create a readable stream:
+var readStream = eventStream.readArray( data );
+
+// Start streaming...
+mock( readStream, onEnd );
+
+function onEnd( error, data ) {
+    console.log( JSON.stringify( data ) );
+}
+```
 
 
 

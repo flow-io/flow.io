@@ -82,7 +82,9 @@ describe( 'flow.io', function tests() {
 			'mOutliers',
 			'eOutliers',
 			'find',
-			'nans'
+			'nans',
+			'mockWrite',
+			'mockRead'
 		];
 
 	it( 'should export an object', function test() {
