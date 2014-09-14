@@ -522,6 +522,10 @@ Filter stream factory which removes any stream values which are not numeric.
 
 
 
+
+
+
+
 ---
 ## Tests
 
