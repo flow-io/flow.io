@@ -52,6 +52,7 @@
     "flow-floor": "~0.0.0",
     "flow-histc": "~0.0.0",
     "flow-iqr": "~0.0.0",
+    "flow-kurtosis": "^1.0.0",
     "flow-map": "~0.0.0",
     "flow-max": "~0.0.0",
     "flow-mean": "~0.0.0",

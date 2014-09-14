@@ -87,12 +87,13 @@ Todos.
 	* string
 	* date/time
 	* arbitrary (filter)
+	* can use any validate.io method
 48. math:
 	* log; log is tricky for negative numbers (requires imaginary numbers)
 	* mod (divisor)
 	* precision
 	* toFixed
-	* trig functions(?)
+	* trig functions(?) --> yes
 49. auto-corr (sink)
 50. logical (matlab-style) --> arbitrary filter function
 51. boolean --> 1, truthy; 0, falsy
@@ -103,7 +104,7 @@ Todos.
 56. moving b-test
 57. flow fig
 58. eval pdfs over a specified range (min,max) and resolution (num values)
-	* flow-gaussian
+	* flow-normal
 	* flow-exponential
 	* flow-binomial
 	* flow-beta
@@ -121,6 +122,8 @@ Todos.
 68. replay --> stream data to transform stream; as data streams, simply pass through while also writing data to file (cache; newline delimited text); once data source ends, replay the data continuously (node-byline); pause, stop (clear cache), start.
 69. coefficient of variation
 70. throttle (emit data on time interval; e.g., every 10 secs; alternatively, only emit event when no other data is received for some time interval following first data)
+71. roundn()
+72. stdev() - reduce, window, chunk
 
 
 
@@ -135,7 +138,7 @@ Todos.
 6. 	
 7. 	
 8. 	Stats.kde
-9. 	Stats.kurtosis
+9. 	
 10. 
 11. 
 12. 

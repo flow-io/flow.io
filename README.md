@@ -493,7 +493,7 @@ Reduce stream factory to compute the Pearson product-moment correlation coeffici
 
 #### [flow.skewness()](https://github.com/flow-io/flow-skewness)
 
-Reduce stream factory to calculate the skewness of streamed data values.
+Reduce stream factory to calculate the sample skewness of streamed data values.
 
 ``` javascript
 var readArray = require( 'event-stream' ).readArray;
@@ -504,6 +504,23 @@ var sStream = flow.skewness().stream();
 
 readStream
 	.pipe( sStream )
+	.pipe( /* writable stream */ );
+```
+
+
+#### [flow.kurtosis()](https://github.com/flow-io/flow-kurtosis)
+
+Reduce stream factory to calculate the sample excess kurtosis of streamed data values.
+
+``` javascript
+var readArray = require( 'event-stream' ).readArray;
+
+var readStream = readArray( [ 82, 34, 45, 56, 56, 71 ] );
+
+var kStream = flow.kurtosis().stream();
+
+readStream
+	.pipe( kStream )
 	.pipe( /* writable stream */ );
 ```
 
