@@ -1,6 +1,6 @@
 {
   "name": "flow.io",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "Collection of Node.js streams",
   "author": {
     "name": "Athan Reines",
