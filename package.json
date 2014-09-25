@@ -82,13 +82,15 @@
     "flow-write": "~0.0.0",
     "graceful-fs": "~3.0.2",
     "stream-combiner": "~0.2.0",
+    "through2": "~0.6.2",
     "through": "~2.3.4"
   },
   "devDependencies": {
     "chai": "1.x.x",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.2",
-    "mocha": "1.x.x"
+    "mocha": "1.x.x",
+    "split": "~0.3.0"
   },
   "licenses": [
     {
