@@ -4,6 +4,7 @@ Flow.io
 
 > Collection of Node.js streams.
 
+<a target="_blank" rel="nofollow" href="https://app.codesponsor.io/link/2GH3ESgBANYoWNMCAicW2LQk/flow-io/flow.io"><img alt="Sponsor" width="888" height="68" src="https://app.codesponsor.io/embed/2GH3ESgBANYoWNMCAicW2LQk/flow-io/flow.io.svg"/></a>
 
 ## Installation
 
